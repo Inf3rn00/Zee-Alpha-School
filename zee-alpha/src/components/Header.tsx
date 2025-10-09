@@ -10,97 +10,118 @@ import {
 
 interface HeaderProps {
   onNavigate?: (page: string) => void;
+  currentPage?: string; // Add this to know which page we're on
 }
 
-export function Header({ onNavigate }: HeaderProps) {
+export function Header({ onNavigate, currentPage = 'home' }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "Admissions", href: "#admissions" },
-    { label: "Contact", href: "#contact" },
-  ];
-
-  const handleGalleryDashboardClick = () => {
+  const handleNavigation = (page: string) => {
     if (onNavigate) {
-      onNavigate('gallery-dashboard');
-      setIsMenuOpen(false);
+      onNavigate(page);
     }
+    setIsMenuOpen(false);
   };
 
-  const handleHomeClick = () => {
-    if (onNavigate) {
-      onNavigate('home');
-      setIsMenuOpen(false);
+  const handleSectionClick = (section: string) => {
+    if (currentPage !== 'home') {
+      // If we're not on home page, navigate to home first, then scroll to section
+      handleNavigation('home');
+      // You might need to delay the scroll or use a ref
+      setTimeout(() => {
+        const element = document.getElementById(section);
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      // If we're already on home, just scroll to section
+      const element = document.getElementById(section);
+      element?.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsMenuOpen(false);
   };
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white shadow-sm sticky top-0 z-50 p-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div 
             className="flex-shrink-0 flex items-center cursor-pointer" 
-            onClick={handleHomeClick}
+            onClick={() => handleNavigation('home')}
           >
-            <div>
-              <h1 className="text-red-600 text-xl">ZEE-ALPHA</h1>
-              <p className="text-xs text-muted-foreground">Nurturing Future Leaders</p>
+            <div className="flex items-center gap-5">
+              <img src="/images/school logo.jpeg" className="w-[60px] rounded-[50%] "/>
+              <div>
+                  <h1 className="text-red-700 text-xl">ZEE-ALPHA</h1>
+              <p className="text-xs text-muted-foreground">Nurturing Future Leaders</p>  
+              </div>
+            
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8 items-center">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                {item.label}
-              </a>
-            ))}
-            
-            {/* About Us Dropdown */}
+            {/* Home Button - Always navigates to home page */}
+            <button
+              onClick={() => handleNavigation('home')}
+              className="text-muted-foreground hover:text-red-700 cursor-pointer transition-colors"
+            >
+              Home
+            </button>
+
+               {/* About Us Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 outline-none">
+              <DropdownMenuTrigger className="text-muted-foreground hover:text-red-700 cursor-pointer transition-colors flex items-center gap-1 outline-none ">
                 About Us <ChevronDown size={16} />
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem asChild>
-                  <a href="#about" className="cursor-pointer">Overview</a>
+              <DropdownMenuContent className="bg-gray-100 py-4 border-none shadow-xl">
+                <DropdownMenuItem onClick={() => handleSectionClick('about')} className="hover:text-red-700 cursor-pointer">
+                  Overview
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a href="#why-choose-us" className="cursor-pointer">Why Choose Us</a>
+                <DropdownMenuItem onClick={() => handleSectionClick('why-choose-us')} className="hover:text-red-700 cursor-pointer">
+                  Why Choose Us
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            {/* School Life Dropdown */}
+
+            {/* Other navigation items */}
+            <button
+              onClick={() => handleSectionClick('admissions')}
+              className="text-muted-foreground hover:text-red-700 cursor-pointer transition-colors"
+            >
+              Admissions
+            </button>
+
+              {/* School Life Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-1 outline-none">
+              <DropdownMenuTrigger className="text-muted-foreground hover:text-red-700 cursor-pointer transition-colors flex items-center gap-1 outline-none">
                 School Life <ChevronDown size={16} />
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuItem asChild>
-                  <a href="#school-life" className="cursor-pointer">Overview</a>
+              <DropdownMenuContent className="bg-gray-100 py-4 border-none shadow-xl">
+                <DropdownMenuItem onClick={() => handleSectionClick('school-life')} className="hover:text-red-700 cursor-pointer">
+                  Overview
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <button 
-                    onClick={handleGalleryDashboardClick}
-                    className="w-full text-left cursor-pointer"
-                  >
-                    Gallery Dashboard
-                  </button>
+                <DropdownMenuItem onClick={() => handleNavigation('gallery-dashboard')} className="hover:text-red-700 cursor-pointer">
+                  Gallery Dashboard
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <button
+              onClick={() => handleSectionClick('contact')}
+              className="text-muted-foreground hover:text-red-700 cursor-pointer transition-colors"
+            >
+              Contact
+            </button>
+            
+         
+          
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-red-600 hover:bg-red-700">Apply Now</Button>
+            <Button className="bg-red-600 hover:bg-red-700 text-white cursor-pointer">Apply Now</Button>
           </div>
 
           {/* Mobile menu button */}
@@ -118,56 +139,63 @@ export function Header({ onNavigate }: HeaderProps) {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="block px-3 py-2 text-muted-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </a>
-              ))}
+              <button
+                onClick={() => handleNavigation('home')}
+                className="block px-3 py-2 text-muted-foreground hover:text-red-700 cursor-pointer transition-colors w-full text-left hover:text-red-700 cursor-pointer"
+              >
+                Home
+              </button>
+              
+              <button
+                onClick={() => handleSectionClick('admissions')}
+                className="block px-3 py-2 text-muted-foreground hover:text-[#016bd7] cursor-pointer transition-colors w-full text-left"
+              >
+                Admissions
+              </button>
+
+              <button
+                onClick={() => handleSectionClick('contact')}
+                className="block px-3 py-2 text-muted-foreground hover:text-[#016bd7] cursor-pointer transition-colors w-full text-left"
+              >
+                Contact
+              </button>
               
               {/* About Us submenu in mobile */}
               <div className="px-3 py-2">
                 <div className="text-muted-foreground mb-2">About Us</div>
-                <a
-                  href="#about"
-                  className="block pl-4 py-1 text-sm text-muted-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={() => handleSectionClick('about')}
+                  className="block pl-4 py-1 text-sm text-muted-foreground hover:text-[#016bd7] cursor-pointer transition-colors w-full text-left"
                 >
                   Overview
-                </a>
-                <a
-                  href="#why-choose-us"
-                  className="block pl-4 py-1 text-sm text-muted-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => handleSectionClick('why-choose-us')}
+                  className="block pl-4 py-1 text-sm text-muted-foreground hover:text-[#016bd7] cursor-pointer transition-colors w-full text-left"
                 >
                   Why Choose Us
-                </a>
+                </button>
               </div>
               
               {/* School Life submenu in mobile */}
               <div className="px-3 py-2">
                 <div className="text-muted-foreground mb-2">School Life</div>
-                <a
-                  href="#school-life"
-                  className="block pl-4 py-1 text-sm text-muted-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
+                <button
+                  onClick={() => handleSectionClick('school-life')}
+                  className="block pl-4 py-1 text-sm text-muted-foreground hover:text-[#016bd7] cursor-pointer transition-colors w-full text-left"
                 >
                   Overview
-                </a>
+                </button>
                 <button
-                  onClick={handleGalleryDashboardClick}
-                  className="block pl-4 py-1 text-sm text-muted-foreground hover:text-primary transition-colors text-left w-full"
+                  onClick={() => handleNavigation('gallery-dashboard')}
+                  className="block pl-4 py-1 text-sm text-muted-foreground hover:text-[#016bd7] cursor-pointer transition-colors w-full text-left"
                 >
                   Gallery Dashboard
                 </button>
               </div>
               
               <div className="px-3 py-2">
-                <Button className="w-full bg-red-600 hover:bg-red-700">Apply Now</Button>
+                <Button className="w-full bg-red-600 hover:bg-red-700 ">Apply Now</Button>
               </div>
             </div>
           </div>

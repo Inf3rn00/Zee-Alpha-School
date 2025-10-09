@@ -11,6 +11,7 @@ import { GallerySection } from "./components/GallerySection";
 import { GalleryDashboard } from "./components/GalleryDashboard";
 import { PartnersSection } from "./components/PartnersSection";
 import { Footer } from "./components/Footer";
+import './index.css'
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>('home');

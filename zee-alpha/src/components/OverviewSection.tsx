@@ -30,26 +30,26 @@ export function OverviewSection() {
             </div>
             
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700">
+              <Button size="lg" className="bg-red-600 hover:bg-red-700 cursor-pointer">
                 Apply Now
               </Button>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" className="cursor-pointer">
                 Learn More
               </Button>
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" className="cursor-pointer">
                 Contact Us
               </Button>
             </div>
           </div>
 
           <div className="relative">
-            <div className="bg-red-100 rounded-lg p-8 text-center">
+            <div className="rounded-lg p-8 text-center">
               <ImageWithFallback
-                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBjYW1wdXN8ZW58MXx8fHwxNzU5MzI5NDc2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                src="/images/playground1.jpeg"
                 alt="School Campus"
-                className="w-full h-64 object-cover rounded-lg mb-4"
+                className="w-full h-[400px] object-cover rounded-lg mb-4"
               />
-              <h3 className="text-xl">School Campus</h3>
+             
             </div>
           </div>
         </div>

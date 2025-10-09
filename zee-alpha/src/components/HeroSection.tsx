@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const slides = [
   {
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMGNsYXNzcm9vbSUyMGxlYXJuaW5nfGVufDF8fHx8MTc1OTM4NzI4Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/images/playground1.jpeg",
     title: "ZEE-ALPHA INTERNATIONAL SCHOOLS",
     subtitle: "Excellence Through Knowledge, Character Through Values",
     description: "Empowering global citizens through innovative education and moral excellence."
@@ -50,36 +49,53 @@ const slides = [
 
 export function HeroSection() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      handleSlideChange((currentSlide + 1) % slides.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [currentSlide]);
+
+  const handleSlideChange = (newIndex: number) => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setCurrentSlide(newIndex);
+    
+    // Reset transitioning state after animation completes
+    setTimeout(() => setIsTransitioning(false), 1000);
+  };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    handleSlideChange((currentSlide + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    handleSlideChange((currentSlide - 1 + slides.length) % slides.length);
   };
 
   return (
     <section id="home" className="relative h-screen overflow-hidden">
+      {/* Render all slides for transition */}
       {slides.map((slide, index) => (
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
+            index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
           }`}
+          style={{ 
+            zIndex: index === currentSlide ? 10 : 0,
+          }}
         >
-          <ImageWithFallback
+          <img
             src={slide.image}
             alt={slide.title}
-            className="w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover"
+            loading={index === 0 ? "eager" : "lazy"}
           />
+         
           <div className="absolute inset-0 bg-black bg-opacity-40" />
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
@@ -88,10 +104,10 @@ export function HeroSection() {
                 <p className="text-xl md:text-2xl mb-6 text-gray-200">{slide.subtitle}</p>
                 <p className="text-lg mb-8 text-gray-300 max-w-2xl">{slide.description}</p>
                 <div className="space-x-4">
-                  <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white">
+                  <Button size="lg" className="bg-red-700 hover:bg-red-800 text-white">
                     Apply for Admission
                   </Button>
-                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary">
+                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-gray-900">
                     Take a Tour
                   </Button>
                 </div>
@@ -104,26 +120,29 @@ export function HeroSection() {
       {/* Navigation arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-colors"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-colors z-30"
+        disabled={isTransitioning}
       >
         <ChevronLeft size={24} />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-colors"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-2 rounded-full transition-colors z-30"
+        disabled={isTransitioning}
       >
         <ChevronRight size={24} />
       </button>
 
       {/* Slide indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 z-30">
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentSlide(index)}
+            onClick={() => handleSlideChange(index)}
             className={`w-3 h-3 rounded-full transition-colors ${
               index === currentSlide ? "bg-white" : "bg-white/50"
             }`}
+            disabled={isTransitioning}
           />
         ))}
       </div>

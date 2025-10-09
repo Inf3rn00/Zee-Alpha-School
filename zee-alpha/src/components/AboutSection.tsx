@@ -49,25 +49,7 @@ const values = [
   }
 ];
 
-// const curriculumLevels = [
-//   {
-//     title: "Early Years (Creche & Nursery)",
-//     description: "Play-based learning that sparks curiosity and builds foundational skills through engaging activities."
-//   },
-//   {
-//     title: "Primary School", 
-//     description: "Strong foundation in literacy, numeracy, science and creativity to prepare students for advanced learning."
-//   },
-//   {
-//     title: "Secondary School",
-//     description: "Advanced learning in sciences, arts, and technology with opportunities for international examinations."
-//   }
-// ];
 
-// const highlights = [
-//   "Dedicated and highly qualified teachers",
-//   "Vibrant extracurricular activities to develop well-rounded students"
-// ];
 
 export function AboutSection() {
   return (
