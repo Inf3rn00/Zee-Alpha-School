@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "react-day-picker": "^9.11.1",
+    "shadcn": "^3.4.0"
+  }
+}
