@@ -4,8 +4,9 @@ import { User, Mail, Shield, Award, Lightbulb, Handshake, Users, Target, Eye} fr
 
 const teamMembers = [
   {
-    title: "Proprietor/Proprietress",
-    email: "info@zeealpha.edu.ng"
+    title: "Proprietress",
+    email: "info@zeealpha.edu.ng",
+    image: "images/staff giving speech.jpeg"
   },
   {
     title: "Board Director", 
@@ -105,8 +106,12 @@ export function AboutSection() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {teamMembers.map((member, index) => (
               <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
-                <div className="bg-red-100 w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <User className="text-red-600" size={32} />
+                <div className=" w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                  {member.image? (
+                    <img src={member.image} alt={member.title} className="w-21 h-21 object-cover rounded-full" />
+                  ) : (
+                    <User className="text-red-600" size={32} />
+                  ) }
                 </div>
                 <h4 className="mb-3">{member.title}</h4>
                 <div className="flex items-center justify-center text-muted-foreground">

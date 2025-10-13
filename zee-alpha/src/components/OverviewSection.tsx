@@ -30,14 +30,12 @@ export function OverviewSection() {
             </div>
             
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="bg-red-600 hover:bg-red-700 cursor-pointer">
+              <Button size="lg" className="bg-red-600 hover:bg-red-700 cursor-pointer text-white">
                 Apply Now
               </Button>
+             
               <Button size="lg" variant="outline" className="cursor-pointer">
-                Learn More
-              </Button>
-              <Button size="lg" variant="outline" className="cursor-pointer">
-                Contact Us
+               <a href="#contact">Contact Us</a> 
               </Button>
             </div>
           </div>
@@ -45,7 +43,7 @@ export function OverviewSection() {
           <div className="relative">
             <div className="rounded-lg p-8 text-center">
               <ImageWithFallback
-                src="/images/playground1.jpeg"
+                src="/images/students in ict 7.jpeg"
                 alt="School Campus"
                 className="w-full h-[400px] object-cover rounded-lg mb-4"
               />

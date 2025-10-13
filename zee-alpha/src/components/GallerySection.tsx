@@ -2,28 +2,28 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1573894998033-c0cef4ed722b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBzdHVkZW50cyUyMGNsYXNzcm9vbXxlbnwxfHx8fDE3NTk4NjI1Njd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "Students in classroom",
+    src: "/images/3 little engineers.jpeg",
+    alt: "# little engineers",
   },
   {
-    src: "https://images.unsplash.com/photo-1700671562333-f71286a7c748?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBidWlsZGluZyUyMGNhbXB1c3xlbnwxfHx8fDE3NTk5MzYxNzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "School campus building",
+    src: "/images/3 students posing.jpeg",
+    alt: "Students posing",
   },
   {
-    src: "https://images.unsplash.com/photo-1759763494425-58fc490742ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHNwb3J0cyUyMGFjdGl2aXR5fGVufDF8fHx8MTc1OTkzNjE3NHww&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "Students sports activities",
+    src: "/images/award wining girl 1.jpeg",
+    alt: "Award winning",
   },
   {
-    src: "https://images.unsplash.com/photo-1660606422342-2ce59709bb14?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBsaWJyYXJ5JTIwYm9va3N8ZW58MXx8fHwxNzU5ODQ0NTY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "School library",
+    src: "/images/award winning student 1.jpeg",
+    alt: "Award winning student",
   },
   {
-    src: "https://images.unsplash.com/photo-1758101512269-660feabf64fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaGlsZHJlbiUyMHNjaWVuY2UlMjBsYWJ8ZW58MXx8fHwxNzU5OTM2MTc1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    src: "/images/basic-tech-1.jpeg",
     alt: "Science lab activities",
   },
   {
-    src: "https://images.unsplash.com/photo-1652285374663-d06ce650028a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBncmFkdWF0aW9uJTIwY2VyZW1vbnl8ZW58MXx8fHwxNzU5ODUzMzIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    alt: "Graduation ceremony",
+    src: "/images/engineer drawing.jpeg",
+    alt: "little engineer drawing",
   },
 ];
 

@@ -7,44 +7,53 @@ const slides = [
     image: "/images/playground1.jpeg",
     title: "ZEE-ALPHA INTERNATIONAL SCHOOLS",
     subtitle: "Excellence Through Knowledge, Character Through Values",
-    description: "Empowering global citizens through innovative education and moral excellence."
+    description:
+      "Empowering global citizens through innovative education and moral excellence.",
   },
   {
-    image: "https://images.unsplash.com/photo-1636386689060-37d233b5d345?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBzY2llbmNlJTIwbGFib3JhdG9yeXxlbnwxfHx8fDE3NTkzMjk0NzZ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/images/students-in-ict-main.jpeg",
     title: "Scientific Excellence",
     subtitle: "Innovation Through Discovery",
-    description: "State-of-the-art laboratories fostering scientific inquiry and technological advancement."
+    description:
+      "State-of-the-art laboratories fostering scientific inquiry and technological advancement.",
   },
   {
-    image: "https://images.unsplash.com/photo-1578402027442-b0d03cd2c0a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBsaWJyYXJ5JTIwc3R1ZGVudHMlMjByZWFkaW5nfGVufDF8fHx8MTc1OTQxMTE2NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    title: "Learning Hub",
-    subtitle: "Knowledge Without Boundaries", 
-    description: "Modern library facilities promoting research, reading culture, and lifelong learning."
+    image: "/images/nig-group-pic.jpeg",
+    title: "Global Cultures Hub",
+    subtitle: "Celebrating World Heritage",
+    description:
+      "A multicultural space featuring literature, artifacts, and resources from diverse cultures worldwide, fostering cross-cultural understanding and appreciation.",
   },
   {
-    image: "https://images.unsplash.com/photo-1735457818413-38a9e99f05a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBzcG9ydHMlMjBwbGF5Z3JvdW5kfGVufDF8fHx8MTc1OTMzODIyNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "/images/green vs blue house .jpeg",
     title: "Sports Excellence",
     subtitle: "Building Champions in Life",
-    description: "Comprehensive sports programs developing physical fitness, teamwork, and competitive spirit."
+    description:
+      "Comprehensive sports programs developing physical fitness, teamwork, and competitive spirit.",
   },
   {
-    image: "https://images.unsplash.com/photo-1556419936-a81f78b70a90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBhc3NlbWJseSUyMGF1ZGl0b3JpdW18ZW58MXx8fHwxNzU5NDExMTY2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    title: "Community Gatherings",
-    subtitle: "Unity in Diversity",
-    description: "Bringing our school community together through assemblies, celebrations, and shared experiences."
-  },
-  {
-    image: "https://images.unsplash.com/photo-1642252429939-3f9232959eb9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBhcnQlMjBjbGFzcyUyMGNyZWF0aXZlfGVufDF8fHx8MTc1OTQxMTE2Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image: "images/students showcasing images.jpeg",
     title: "Creative Arts",
     subtitle: "Inspiring Imagination",
-    description: "Nurturing creativity and artistic expression through comprehensive arts education programs."
+    description:
+      "Nurturing creativity and artistic expression through comprehensive arts education programs.",
   },
   {
-    image: "https://images.unsplash.com/photo-1652285374663-d06ce650028a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBncmFkdWF0aW9uJTIwY2VyZW1vbnl8ZW58MXx8fHwxNzU5MzI5NDc3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    image:
+      "/images/book day group.jpeg",
+    title: "Young World Readers",
+    subtitle: "Stories from Every Culture",
+    description:
+      "Engaging multicultural storybooks and reading programs that introduce children to diverse traditions, languages, and perspectives through age-appropriate literature.",
+  },
+  {
+    image:
+      "/images/primary grad pics (mixed).jpeg",
     title: "Achievement & Success",
     subtitle: "Celebrating Excellence",
-    description: "Recognizing the achievements of our graduates as they embark on their journey to change the world."
-  }
+    description:
+      "Recognizing the achievements of our graduates as they embark on their journey to change the world.",
+  },
 ];
 
 export function HeroSection() {
@@ -60,11 +69,10 @@ export function HeroSection() {
 
   const handleSlideChange = (newIndex: number) => {
     if (isTransitioning) return;
-    
+
     setIsTransitioning(true);
     setCurrentSlide(newIndex);
-    
-    // Reset transitioning state after animation completes
+
     setTimeout(() => setIsTransitioning(false), 1000);
   };
 
@@ -78,36 +86,51 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative h-screen overflow-hidden">
-      {/* Render all slides for transition */}
       {slides.map((slide, index) => (
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100" : "opacity-0 pointer-events-none"
+            index === currentSlide
+              ? "opacity-100"
+              : "opacity-0 pointer-events-none"
           }`}
-          style={{ 
-            zIndex: index === currentSlide ? 10 : 0,
-          }}
         >
+          {/* Image background */}
           <img
             src={slide.image}
             alt={slide.title}
-            className="absolute inset-0 w-full h-full object-cover"
+            className="w-full h-full object-cover"
             loading={index === 0 ? "eager" : "lazy"}
           />
-         
-          <div className="absolute inset-0 bg-black bg-opacity-40" />
+
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/40" />
+
+          {/* Content */}
           <div className="absolute inset-0 flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
               <div className="max-w-3xl">
-                <h2 className="text-4xl md:text-5xl lg:text-6xl mb-4">{slide.title}</h2>
-                <p className="text-xl md:text-2xl mb-6 text-gray-200">{slide.subtitle}</p>
-                <p className="text-lg mb-8 text-gray-300 max-w-2xl">{slide.description}</p>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl mb-4">
+                  {slide.title}
+                </h2>
+                <p className="text-xl md:text-2xl mb-6 text-gray-200">
+                  {slide.subtitle}
+                </p>
+                <p className="text-lg mb-8 text-gray-300 max-w-2xl">
+                  {slide.description}
+                </p>
                 <div className="space-x-4">
-                  <Button size="lg" className="bg-red-700 hover:bg-red-800 text-white">
+                  <Button
+                    size="lg"
+                    className="bg-red-700 hover:bg-transparent hover:border-white text-white border-1 border-black cursor-pointer"
+                  >
                     Apply for Admission
                   </Button>
-                  <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-gray-900">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="text-white border-white hover:bg-white hover:text-gray-900 cursor-pointer"
+                  >
                     Take a Tour
                   </Button>
                 </div>

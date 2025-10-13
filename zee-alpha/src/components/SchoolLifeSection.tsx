@@ -1,6 +1,6 @@
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
-import { Users, UserCog, DoorOpen, CheckCircle, Heart, Bus, Calendar, Shield } from "lucide-react";
+import { Users, UserCog, DoorOpen, CheckCircle, Heart, Bus, Calendar, Shield,Volleyball } from "lucide-react";
 
 const lifeCards = [
   {
@@ -13,7 +13,7 @@ const lifeCards = [
     ]
   },
   {
-    icon: Heart,
+    icon:Volleyball,
     title: "Sports",
     items: [
       "Football and basketball teams",
@@ -54,7 +54,7 @@ const lifeCards = [
     icon: Bus,
     title: "Transportation",
     description: "Our adequate and reliable school buses are available at strategic points in each of our locations (Katsina, Kaduna, and Abuja). They function optimally, with licensed and trained drivers.",
-    hasButton: true
+    
   }
 ];
 
@@ -90,11 +90,7 @@ export function SchoolLifeSection() {
                 ) : (
                   <div>
                     <p className="text-muted-foreground mb-6">{card.description}</p>
-                    {card.hasButton && (
-                      <Button className="bg-red-600 hover:bg-red-700">
-                        Get Tickets Now
-                      </Button>
-                    )}
+                   
                   </div>
                 )}
               </CardContent>

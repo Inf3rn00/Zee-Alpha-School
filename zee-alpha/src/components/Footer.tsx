@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
-import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Mail, Phone, MapPin } from "lucide-react";
 
 const quickLinks = [
   { label: "Home", href: "#home" },
@@ -14,7 +14,7 @@ const quickLinks = [
 
 export function Footer() {
   return (
-    <footer id="contact" className="bg-red-500 text-primary-foreground">
+    <footer id="contact" className="bg-red-500 text-primary-foreground text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Contact Info */}
@@ -27,7 +27,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={16} />
-                <span>Phone: [Insert phone number]</span>
+                <span>Phone: 09012345678</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail size={16} />
@@ -44,18 +44,8 @@ export function Footer() {
               <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors" aria-label="Facebook">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors" aria-label="Instagram">
-                <Instagram size={20} />
-              </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors" aria-label="LinkedIn">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors" aria-label="YouTube">
-                <Youtube size={20} />
-              </a>
+             
+             
             </div>
           </div>
 
@@ -75,9 +65,9 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-xl mb-6">Stay Updated</h3>
+           
             <p className="text-primary-foreground/80 mb-6 text-sm">
-              Join the Zee-Alpha community to get the latest information and articles.
+              For inquiries, please reach out to us via email or phone. We look forward to hearing from you!
             </p>
             
             <form onSubmit={(e) => e.preventDefault()}>
@@ -87,8 +77,8 @@ export function Footer() {
                 required
                 className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 mb-4"
               />
-              <Button type="submit" className="w-full bg-red-600 hover:bg-red-700">
-                Join The Community
+              <Button type="submit" className="w-full bg-white text-black hover:bg-gray-100 cursor-pointer">
+                Send Message
               </Button>
             </form>
           </div>
@@ -97,7 +87,7 @@ export function Footer() {
         <Separator className="my-8 bg-primary-foreground/20" />
 
         <div className="text-center text-sm text-primary-foreground/80">
-          <p>&copy; 2024 Zee-Alpha International Schools. All Rights Reserved.</p>
+          <p>&copy; 2025 Zee-Alpha International Schools. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

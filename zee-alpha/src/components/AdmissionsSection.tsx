@@ -53,7 +53,7 @@ export function AdmissionsSection() {
         </div>
 
         <div className="text-center">
-          <Button className="bg-red-600 hover:bg-red-700 mb-6">
+          <Button className="bg-red-600 hover:bg-red-700 mb-6 text-white cursor-pointer" size="lg">
             Join Us
           </Button>
           <p className="text-lg">
