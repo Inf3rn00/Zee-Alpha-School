@@ -60,7 +60,7 @@ export function GalleryDashboard({ onNavigate }: GalleryDashboardProps) {
   const [images, setImages] = useState<GalleryImage[]>([
     {
       id: "1",
-      url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800",
+      url: "/images/boy in green waistcoat.jpeg",
       name: "School Campus",
       description: "Beautiful view of our main campus building",
       category: "Campus & Facilities",
@@ -68,7 +68,7 @@ export function GalleryDashboard({ onNavigate }: GalleryDashboardProps) {
     },
     {
       id: "2",
-      url: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800",
+      url: "/images/class picture with teachers.jpeg",
       name: "Students in Class",
       description: "Students engaged in interactive learning",
       category: "Students & Learning",
