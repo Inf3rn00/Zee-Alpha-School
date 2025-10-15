@@ -177,7 +177,7 @@ export function AboutSection() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
             {values.map((value, index) => (
               <div key={index} className="group">
-                <Card className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-500 border border-white/20  hover:translate-y-[-8px] cursor-pointer">
+                <Card className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 text-center hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-500 border border-white/20  hover:translate-y-[-8px] cursor-pointer h-[325px]">
                   {/* Icon */}
                   <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 ">
                     <value.icon className="text-white" size={28} />
