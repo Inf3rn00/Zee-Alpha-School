@@ -127,13 +127,7 @@ export function AdmissionsSection() {
               Start Application
               <ArrowRight size={20} className="ml-3 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
-            <a 
-              href="#contact" 
-              className="text-white hover:text-red-100 font-semibold flex items-center gap-3 transition-all duration-300 hover:gap-4 group/link"
-            >
-              Contact Admissions 
-              <ArrowRight size={20} className="group-hover/link:translate-x-1 transition-transform duration-300" />
-            </a>
+            
           </div>
           <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
           
