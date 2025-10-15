@@ -15,10 +15,7 @@ export function NewsEventsSection() {
         </div>
 
         <div className="text-center">
-          <Button
-            className="bg-red-600 hover:bg-red-700 text-white cursor-pointer"
-            
-          >
+          <Button className="bg-red-600 hover:bg-red-700 text-white cursor-pointer">
             Subscribe Now
           </Button>
         </div>

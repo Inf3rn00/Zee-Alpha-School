@@ -3,8 +3,7 @@ import { Card } from "./ui/card";
 const partners = [
   {
     name: "WAEC",
-    image:
-      "https://upload.wikimedia.org/wikipedia/commons/d/d9/Waec_logo.png",
+    image: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Waec_logo.png",
   },
   {
     name: "JAMB",
@@ -13,8 +12,7 @@ const partners = [
   },
   {
     name: "NECO",
-    image:
-      "https://neco.gov.ng/assets/neco-logo.df6f9256.png",
+    image: "https://neco.gov.ng/assets/neco-logo.df6f9256.png",
   },
   {
     name: "AL GHURAIR UNIVERSITY",
@@ -42,7 +40,11 @@ export function PartnersSection() {
               className="p-8 text-center hover:shadow-lg transition-shadow"
             >
               <div className="text-2xl">{partner.name}</div>
-              <img src={partner.image} alt={`${partner.name}'s logo`} className="w-20 mx-auto" />
+              <img
+                src={partner.image}
+                alt={`${partner.name}'s logo`}
+                className="w-20 mx-auto"
+              />
             </Card>
           ))}
         </div>

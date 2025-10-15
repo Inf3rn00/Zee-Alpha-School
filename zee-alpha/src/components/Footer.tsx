@@ -9,12 +9,15 @@ const quickLinks = [
   { label: "Why Choose Us", href: "#why-choose-us" },
   { label: "Admissions", href: "#admissions" },
   { label: "School Life", href: "#school-life" },
-  { label: "Gallery", href: "#gallery" }
+  { label: "Gallery", href: "#gallery" },
 ];
 
 export function Footer() {
   return (
-    <footer id="contact" className="bg-red-500 text-primary-foreground text-white">
+    <footer
+      id="contact"
+      className="bg-red-500 text-primary-foreground text-white"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Contact Info */}
@@ -38,12 +41,9 @@ export function Footer() {
                 <span>admissions@zeealpha.edu.ng</span>
               </div>
             </div>
-            
+
             {/* Social Links */}
-            <div className="flex space-x-4">
-              
-             
-            </div>
+            <div className="flex space-x-4"></div>
           </div>
 
           {/* Quick Links */}
@@ -52,7 +52,10 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  <a
+                    href={link.href}
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  >
                     {link.label}
                   </a>
                 </li>
@@ -62,19 +65,22 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-           
             <p className="text-primary-foreground/80 mb-6 text-sm">
-              For inquiries, please reach out to us via email or phone. We look forward to hearing from you!
+              For inquiries, please reach out to us via email or phone. We look
+              forward to hearing from you!
             </p>
-            
+
             <form onSubmit={(e) => e.preventDefault()}>
-              <Input 
+              <Input
                 type="email"
-                placeholder="Your Email" 
+                placeholder="Your Email"
                 required
                 className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 mb-4"
               />
-              <Button type="submit" className="w-full bg-white text-black hover:bg-gray-100 cursor-pointer">
+              <Button
+                type="submit"
+                className="w-full bg-white text-black hover:bg-gray-100 cursor-pointer"
+              >
                 Send Message
               </Button>
             </form>
@@ -84,7 +90,9 @@ export function Footer() {
         <Separator className="my-8 bg-primary-foreground/20" />
 
         <div className="text-center text-sm text-primary-foreground/80">
-          <p>&copy; 2025 Zee-Alpha International Schools. All Rights Reserved.</p>
+          <p>
+            &copy; 2025 Zee-Alpha International Schools. All Rights Reserved.
+          </p>
         </div>
       </div>
     </footer>

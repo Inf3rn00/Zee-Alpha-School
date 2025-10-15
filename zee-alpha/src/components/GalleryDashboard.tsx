@@ -71,7 +71,7 @@ export function GalleryDashboard({ onNavigate }: GalleryDashboardProps) {
       url: "/images/class picture with teachers.jpeg",
       name: "Students in Class",
       description: "Students engaged in interactive learning",
-      category: "Students & Learning",
+      category: "Students & Learning", 
       dateAdded: new Date().toISOString().split('T')[0],
     },
   ]);

@@ -39,16 +39,14 @@ const slides = [
       "Nurturing creativity and artistic expression through comprehensive arts education programs.",
   },
   {
-    image:
-      "/images/book day group.jpeg",
+    image: "/images/book day group.jpeg",
     title: "Young World Readers",
     subtitle: "Stories from Every Culture",
     description:
       "Engaging multicultural storybooks and reading programs that introduce children to diverse traditions, languages, and perspectives through age-appropriate literature.",
   },
   {
-    image:
-      "/images/primary grad pics (mixed).jpeg",
+    image: "/images/primary grad pics (mixed).jpeg",
     title: "Achievement & Success",
     subtitle: "Celebrating Excellence",
     description:
