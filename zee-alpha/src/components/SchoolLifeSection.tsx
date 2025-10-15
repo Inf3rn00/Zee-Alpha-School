@@ -6,7 +6,7 @@ const lifeCards = [
   {
     icon: Users,
     title: "Clubs & Societies",
-    image: "/images/clubs-societies.jpeg",
+    image: "/images/student-mentor.jpeg",
     items: [
       "Debate, drama, art, and music clubs",
       "Coding and robotics programs", 
@@ -20,13 +20,13 @@ const lifeCards = [
     items: [
       "Football and basketball teams",
       "Athletics and track-racing",
-      "Swimming and tennis programs"
+      "Volleyball programs"
     ]
   },
   {
     icon: Heart,
     title: "Character Development",
-    image: "/images/character-development.jpeg",
+    image: "/images/student-speech.jpeg",
     items: [
       "Leadership training programs",
       "Community service initiatives",
@@ -36,9 +36,9 @@ const lifeCards = [
   {
     icon: Calendar,
     title: "Social Activities",
-    image: "/images/social-activities.jpeg",
+    image: "/images/students-radio.jpeg",
     items: [
-      "Cultural day celebrations",
+      
       "Children's day events", 
       "Inter-house sports competitions",
       "End of year class parties",
@@ -48,7 +48,7 @@ const lifeCards = [
   {
     icon: Shield,
     title: "Well-being",
-    image: "/images/wellbeing.jpeg",
+    image: "/images/primary students with red group picture.jpeg",
     items: [
       "On-site sick bay and first aid",
       "Guidance and counselling services",
@@ -58,7 +58,7 @@ const lifeCards = [
   {
     icon: Bus,
     title: "Transportation",
-    image: "/images/transportation.jpeg",
+    image: "/images/nigerian_students_cream_bowties_distinct_faces.jpg",
     description: "Our adequate and reliable school buses are available at strategic points in each of our locations (Katsina, Kaduna, and Abuja). They function optimally, with licensed and trained drivers.",
   }
 ];

@@ -111,10 +111,7 @@ export function GallerySection() {
                     {image.category}
                   </div>
                   
-                  {/* Image Description */}
-                  <p className="text-white font-semibold text-lg leading-tight">
-                    {image.alt}
-                  </p>
+                 
                 </div>
               </div>
 
