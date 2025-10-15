@@ -16,7 +16,7 @@ const lifeCards = [
   {
     icon: Trophy,
     title: "Sports",
-    image: "/images/sports.jpeg",
+    image: "/images/red-house-vs-yellow-house-volleyball.jpeg",
     items: [
       "Football and basketball teams",
       "Athletics and track-racing",
@@ -65,18 +65,17 @@ const lifeCards = [
 
 export function SchoolLifeSection() {
   return (
-    <section id="school-life" className="relative py-24 overflow-hidden bg-white">
-      {/* Animated Background */}
+    <section id="school-life" className="relative py-24 bg-gradient-to-br from-white to-gray-50 overflow-hidden">
+          {/* Animated Background */}
       <div className="absolute inset-0">
         {/* Animated floating shapes */}
-        <div className="absolute top-20 left-10 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
         <div
-          className="absolute top-40 right-20 w-48 h-48 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute bottom-20 left-1/3 w-52 h-52 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
+          className="absolute bottom-20 left-1/3 w-52 h-52 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
           style={{ animationDelay: "4s" }}
+          ></div>
+        <div
+          className="absolute top-100 right-50 w-48 h-48 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse"
+          style={{ animationDelay: "2s" }}
         ></div>
 
         {/* Subtle pattern overlay */}
@@ -87,92 +86,127 @@ export function SchoolLifeSection() {
           }}
         ></div>
       </div>
-
+      
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-block mb-4">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="h-1 w-6 bg-gradient-to-r from-red-600 to-red-400 rounded-full"></div>
-              <span className="text-red-600 font-semibold uppercase tracking-widest text-sm">
-                Explore
-              </span>
-            </div>
+          <div className="inline-flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+              School Life
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-500 rounded-full mb-6"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">School Life</h2>
-          <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-            Life at Zee-Alpha is rich with opportunities for students and pupils to explore their talents, passions, and dreams in a vibrant, supportive community.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Life at Zee-Alpha is rich with opportunities for students and pupils to explore their 
+            talents, passions, and dreams in a vibrant, supportive community.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {/* Main Cards Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {lifeCards.map((card, index) => (
             <div key={index} className="group">
-              <Card className="p-0 bg-white hover:shadow-lg transition-shadow rounded-2xl border border-gray-100 h-full hover:border-red-200 overflow-hidden flex flex-col">
+              <Card className="relative bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-8px] cursor-pointer h-full flex flex-col">
                 {/* Image Section */}
-                <div className="relative h-48 overflow-hidden bg-gray-200">
+                <div className="relative h-48 overflow-hidden">
                   <ImageWithFallback
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+                  
+                  {/* Icon Badge */}
+                  <div className="absolute top-4 left-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-500">
+                    <card.icon className="text-white" size={24} />
+                  </div>
                 </div>
 
                 {/* Content Section */}
-                <CardContent className="p-6 flex-1 flex flex-col">
-                  <div className="flex items-start mb-4 group-hover:scale-110 transition-transform duration-300 origin-left">
-                    <div className="p-2 bg-red-50 rounded-lg mr-3 flex-shrink-0">
-                      <card.icon className="text-red-600" size={20} />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-800">{card.title}</h3>
-                  </div>
+                <CardContent className="p-8 flex-1 flex flex-col">
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-700 transition-colors duration-300">
+                    {card.title}
+                  </h3>
                   
+                  {/* Content */}
                   {card.items ? (
-                    <ul className="space-y-2 flex-1">
+                    <ul className="space-y-3 flex-1">
                       {card.items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-start gap-2 group/item">
-                          <CheckCircle className="text-red-600 mt-0.5 flex-shrink-0 group-hover/item:text-red-700 transition-colors" size={16} />
-                          <span className="text-gray-700 text-sm leading-relaxed group-hover/item:text-gray-900 transition-colors">{item}</span>
+                        <li key={itemIndex} className="flex items-start gap-3 group/item">
+                          <CheckCircle className="text-red-500 mt-0.5 flex-shrink-0 group-hover/item:text-red-600 transition-colors duration-300" size={18} />
+                          <span className="text-gray-600 text-sm leading-relaxed group-hover/item:text-gray-900 transition-colors duration-300">
+                            {item}
+                          </span>
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-gray-700 text-sm leading-relaxed flex-1">{card.description}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed flex-1 group-hover:text-gray-900 transition-colors duration-300">
+                      {card.description}
+                    </p>
                   )}
                 </CardContent>
+
+                {/* Hover Border Effect */}
+                <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-red-500 to-red-600 bg-clip-padding opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+                  <div className="rounded-3xl bg-white w-full h-full"></div>
+                </div>
               </Card>
             </div>
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          <Card className="p-8 bg-white hover:shadow-lg transition-shadow rounded-2xl border border-gray-100 group hover:border-red-200">
-            <CardContent className="p-0">
-              <div className="flex items-start mb-4 group-hover:scale-110 transition-transform duration-300 origin-left">
-                <div className="p-3 bg-red-50 rounded-lg mr-4 flex-shrink-0">
-                  <UserCog className="text-red-600" size={24} />
+        {/* PTA & Open Days Cards */}
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* PTA Card */}
+          <div className="group">
+            <Card className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-8px] cursor-pointer">
+              <CardContent className="p-0">
+                <div className="flex items-start gap-6 mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg shadow-red-200/50">
+                    <UserCog className="text-white" size={28} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 group-hover:text-red-700 transition-colors duration-300">
+                    PTA
+                  </h3>
                 </div>
-                <h3 className="text-lg font-bold text-gray-800">PTA</h3>
-              </div>
-              <p className="text-gray-700 text-sm leading-relaxed">
-                Join our PTA discussions monthly to get acquainted with the happenings in the environment and bring your concerns to us.
-              </p>
-            </CardContent>
-          </Card>
+                <p className="text-gray-600 text-lg leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
+                  Join our PTA discussions monthly to get acquainted with the happenings in the environment and bring your concerns to us.
+                </p>
+              </CardContent>
 
-          <Card className="p-8 bg-white hover:shadow-lg transition-shadow rounded-2xl border border-gray-100 group hover:border-red-200">
-            <CardContent className="p-0">
-              <div className="flex items-start mb-4 group-hover:scale-110 transition-transform duration-300 origin-left">
-                <div className="p-3 bg-red-50 rounded-lg mr-4 flex-shrink-0">
-                  <DoorOpen className="text-red-600" size={24} />
-                </div>
-                <h3 className="text-lg font-bold text-gray-800">Open Days</h3>
+              {/* Hover Border Effect */}
+              <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-red-500 to-red-600 bg-clip-padding opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+                <div className="rounded-3xl bg-white w-full h-full"></div>
               </div>
-              <p className="text-gray-700 text-sm leading-relaxed">
-                Our open days hold once a term, where parents come into school during school hours and witness how students behave in class and discuss issues concerning your child.
-              </p>
-            </CardContent>
-          </Card>
+            </Card>
+          </div>
+
+          {/* Open Days Card */}
+          <div className="group">
+            <Card className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-8px] cursor-pointer">
+              <CardContent className="p-0">
+                <div className="flex items-start gap-6 mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-lg shadow-red-200/50">
+                    <DoorOpen className="text-white" size={28} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 group-hover:text-red-700 transition-colors duration-300">
+                    Open Days
+                  </h3>
+                </div>
+                <p className="text-gray-600 text-lg leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
+                  Our open days hold once a term, where parents come into school during school hours and witness how students behave in class and discuss issues concerning your child.
+                </p>
+              </CardContent>
+
+              {/* Hover Border Effect */}
+              <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-red-500 to-red-600 bg-clip-padding opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+                <div className="rounded-3xl bg-white w-full h-full"></div>
+              </div>
+            </Card>
+          </div>
         </div>
       </div>
     </section>

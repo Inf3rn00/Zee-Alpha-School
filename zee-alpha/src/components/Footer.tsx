@@ -1,7 +1,7 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
-import { Facebook, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Mail, Phone, MapPin, Twitter, Instagram, Youtube } from "lucide-react";
 
 const quickLinks = [
   { label: "Home", href: "#home" },
@@ -16,83 +16,118 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-red-500 text-primary-foreground text-white"
+      className="relative bg-gradient-to-br from-red-600 to-red-700 text-white overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-3 gap-8">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent"></div>
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="grid lg:grid-cols-3 gap-12">
           {/* Contact Info */}
-          <div>
-            <h3 className="text-xl mb-6">Contact Us</h3>
-            <div className="space-y-3 text-sm mb-6">
-              <div className="flex items-start space-x-3">
-                <MapPin size={16} className="mt-1 flex-shrink-0" />
-                <span>Funtua, Katsina State, Nigeria</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone size={16} />
-                <span>Phone: 09012345678</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail size={16} />
-                <span>info@zeealpha.edu.ng</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Mail size={16} />
-                <span>admissions@zeealpha.edu.ng</span>
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-8 tracking-tight">Get In Touch</h3>
+              <div className="space-y-6">
+                <div className="flex items-start gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                    <MapPin size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-white/90">Our Location</p>
+                    <p className="text-white/70 text-sm leading-relaxed mt-1">
+                      Funtua, Katsina State, Nigeria
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                    <Phone size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-white/90">Phone Number</p>
+                    <p className="text-white/70 text-sm mt-1">09012345678</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
+                    <Mail size={20} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-semibold text-white/90">Email Address</p>
+                    <p className="text-white/70 text-sm mt-1">info@zeealpha.edu.ng</p>
+                    <p className="text-white/70 text-sm mt-1">admissions@zeealpha.edu.ng</p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex space-x-4"></div>
+           
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl mb-6">Quick Links</h3>
-            <ul className="space-y-2 text-sm">
+            <h3 className="text-2xl font-bold mb-8 tracking-tight">Quick Links</h3>
+            <div className="grid grid-cols-2 gap-4">
               {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                  >
+                <a
+                  key={index}
+                  href={link.href}
+                  className="group flex items-center gap-3 py-3 px-4 bg-white/5 backdrop-blur-sm rounded-2xl hover:bg-white/10 hover:translate-x-2 transition-all duration-300 border border-white/10 hover:border-white/20"
+                >
+                  <div className="w-2 h-2 bg-white/40 rounded-full group-hover:bg-white transition-all duration-300"></div>
+                  <span className="text-white/80 group-hover:text-white font-medium transition-colors duration-300">
                     {link.label}
-                  </a>
-                </li>
+                  </span>
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Newsletter */}
           <div>
-            <p className="text-primary-foreground/80 mb-6 text-sm">
-              For inquiries, please reach out to us via email or phone. We look
-              forward to hearing from you!
-            </p>
+            <h3 className="text-2xl font-bold mb-8 tracking-tight">Stay Updated</h3>
+            <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+              <p className="text-white/80 mb-6 leading-relaxed">
+                Subscribe to our newsletter for the latest updates on admissions, 
+                events, and educational insights from Zee-Alpha International Schools.
+              </p>
 
-            <form onSubmit={(e) => e.preventDefault()}>
-              <Input
-                type="email"
-                placeholder="Your Email"
-                required
-                className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 mb-4"
-              />
-              <Button
-                type="submit"
-                className="w-full bg-white text-black hover:bg-gray-100 cursor-pointer"
-              >
-                Send Message
-              </Button>
-            </form>
+              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+                <div className="relative">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email address"
+                    required
+                    className="w-full bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 rounded-2xl px-6 py-4 h-14 focus:bg-white/15 focus:border-white/30 transition-all duration-300 border-2"
+                  />
+                  <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40" size={20} />
+                </div>
+                <Button
+                  type="submit"
+                  className="w-full bg-white text-red-600 hover:bg-gray-100 hover:scale-105 cursor-pointer rounded-2xl py-4 h-14 font-semibold text-lg transition-all duration-300 shadow-lg shadow-red-900/30 border-0"
+                >
+                  Subscribe Now
+                </Button>
+              </form>
+            </div>
           </div>
         </div>
 
-        <Separator className="my-8 bg-primary-foreground/20" />
+        <Separator className="my-12 bg-white/20" />
 
-        <div className="text-center text-sm text-primary-foreground/80">
-          <p>
-            &copy; 2025 Zee-Alpha International Schools. All Rights Reserved.
-          </p>
+        <div className="text-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-white/70 text-sm">
+              <p>
+                &copy; 2025 Zee-Alpha International Schools. All Rights Reserved.
+              </p>
+            </div>
+           
+          </div>
         </div>
       </div>
     </footer>

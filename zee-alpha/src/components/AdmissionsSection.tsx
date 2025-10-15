@@ -30,19 +30,13 @@ const admissionSteps = [
 
 export function AdmissionsSection() {
   return (
-    <section id="admissions" className="relative py-24 overflow-hidden bg-white">
-      {/* Animated Background */}
+    <section id="admissions" className="relative py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+          {/* Animated Background */}
       <div className="absolute inset-0">
         {/* Animated floating shapes */}
         <div className="absolute top-20 left-10 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-        <div
-          className="absolute top-40 right-20 w-48 h-48 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse"
-          style={{ animationDelay: "2s" }}
-        ></div>
-        <div
-          className="absolute bottom-20 left-1/3 w-52 h-52 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
-          style={{ animationDelay: "4s" }}
-        ></div>
+      
+      
 
         {/* Subtle pattern overlay */}
         <div
@@ -52,86 +46,101 @@ export function AdmissionsSection() {
           }}
         ></div>
       </div>
-
+      
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-block mb-4">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="h-1 w-6 bg-gradient-to-r from-red-600 to-red-400 rounded-full"></div>
-              <span className="text-red-600 font-semibold uppercase tracking-widest text-sm">
-                Join Us
-              </span>
-            </div>
+          <div className="inline-flex flex-col items-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+              Admissions Process
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-500 rounded-full mb-6"></div>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Admissions Process
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Choosing the right school for your child is an important decision. We're committed to making the admission process smooth, transparent, and welcoming for every family.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Choosing the right school for your child is an important decision. We're committed to making 
+            the admission process smooth, transparent, and welcoming for every family.
           </p>
         </div>
 
         {/* Process Steps */}
         <div className="mb-20">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {admissionSteps.map((step, index) => (
               <div key={index} className="relative group">
-                {/* Card */}
-                <Card className="p-8 text-center bg-white border border-gray-100 rounded-2xl hover:border-red-200 hover:shadow-lg transition-all duration-300 h-full">
-                  <CardContent className="p-0">
+                {/* Step Card */}
+                <Card className="relative bg-white/90 backdrop-blur-sm rounded-3xl p-8 hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-8px] cursor-pointer h-full">
+                  <CardContent className="p-0 text-center">
                     {/* Step Number */}
-                    <div className="w-14 h-14 bg-gradient-to-br from-red-600 to-red-700 text-white rounded-full mx-auto mb-6 flex items-center justify-center text-xl font-bold group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-red-600 text-white rounded-2xl mx-auto mb-6 flex items-center justify-center text-2xl font-bold group-hover:scale-110 transition-all duration-500 shadow-lg shadow-red-200/50">
                       {step.step}
                     </div>
 
                     {/* Title */}
-                    <h4 className="text-xl font-bold text-gray-800 mb-3">
+                    <h4 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-700 transition-colors duration-300">
                       {step.title}
                     </h4>
 
                     {/* Description */}
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                    <p className="text-gray-600 text-sm leading-relaxed">
                       {step.description}
                     </p>
-
-                    {/* Arrow Icon */}
-                    {index < admissionSteps.length - 1 && (
-                      <div className="absolute -right-4 top-1/2 transform -translate-y-1/2 hidden lg:flex">
-                        <ArrowRight className="text-red-600 text-2xl" />
-                      </div>
-                    )}
                   </CardContent>
+
+                  {/* Hover Border Effect */}
+                  <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-red-500 to-red-600 bg-clip-padding opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+                    <div className="rounded-3xl bg-white w-full h-full"></div>
+                  </div>
                 </Card>
+
+                {/* Desktop Arrow Connector */}
+                {index < admissionSteps.length - 1 && (
+                  <div className="hidden lg:block absolute -right-4 top-1/2 transform -translate-y-1/2 z-10">
+                    <div className="w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg shadow-gray-200/50 border border-gray-200/60 group-hover:bg-red-500 group-hover:text-white transition-all duration-300">
+                      <ArrowRight size={16} className="text-gray-600 group-hover:text-white transition-colors duration-300" />
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
           {/* Mobile Arrow Indicators */}
-          <div className="lg:hidden flex justify-center gap-4 mb-8">
-            <ArrowRight className="text-red-600 rotate-90" />
+          <div className="lg:hidden flex justify-center gap-4 mt-8">
+            <div className="flex items-center gap-2 text-red-600">
+              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-semibold">Swipe to see more</span>
+              <ArrowRight className="text-red-600" size={16} />
+            </div>
           </div>
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-12 text-center shadow-xl">
-          <h3 className="text-3xl font-bold text-white mb-4">
+        <div className="bg-gradient-to-br from-red-600 to-red-700 rounded-3xl p-12 text-center shadow-2xl shadow-red-200/50 border border-red-500/20">
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-6 tracking-tight">
             Ready to Join Zee-Alpha?
           </h3>
-          <p className="text-red-100 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-red-100 text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
             Take the first step towards an enriching educational experience. Start your admission journey with us today.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button className="bg-white text-red-600 hover:bg-gray-100 font-semibold px-8 py-3 rounded-lg cursor-pointer transition-all duration-300 hover:shadow-lg">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+            <Button className="bg-white hover:bg-gray-100 text-red-600 cursor-pointer rounded-2xl px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl shadow-red-900/30 border-0 group">
               Start Application
+              <ArrowRight size={20} className="ml-3 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
-            <a href="#contact" className="text-white hover:text-red-100 font-semibold flex items-center gap-2 transition-colors">
-              Contact Admissions <ArrowRight size={20} />
+            <a 
+              href="#contact" 
+              className="text-white hover:text-red-100 font-semibold flex items-center gap-3 transition-all duration-300 hover:gap-4 group/link"
+            >
+              Contact Admissions 
+              <ArrowRight size={20} className="group-hover/link:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
-          <p className="text-red-100 text-sm mt-8">
-            Questions? Email us at <strong className="text-white">admissions@zeealpha.edu.ng</strong>
-          </p>
+          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
+          
+            <p className="text-red-100 text-sm">
+              Questions? Email us at <strong className="text-white font-semibold">admissions@zeealpha.edu.ng</strong>
+            </p>
+          </div>
         </div>
       </div>
     </section>
