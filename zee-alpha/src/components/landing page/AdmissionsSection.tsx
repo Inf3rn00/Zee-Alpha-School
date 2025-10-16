@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
 import { Card, CardContent } from "../ui/card";
 import { ArrowRight } from "lucide-react";
@@ -111,11 +112,7 @@ export function AdmissionsSection() {
 
           {/* Mobile Arrow Indicators */}
           <div className="lg:hidden flex justify-center gap-4 mt-8">
-            <div className="flex items-center gap-2 text-red-600">
-              <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-semibold">Swipe to see more</span>
-              <ArrowRight className="text-red-600" size={16} />
-            </div>
+            
           </div>
         </div>
 
@@ -129,8 +126,8 @@ export function AdmissionsSection() {
             Start your admission journey with us today.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-            <Button className="bg-white hover:bg-gray-100 text-red-600 cursor-pointer rounded-2xl px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl shadow-red-900/30 border-0 group">
-              Start Application
+            <Button  className="bg-white hover:bg-gray-100 text-red-600 cursor-pointer rounded-2xl px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl shadow-red-900/30 border-0 group">
+              <Link to="/admissions">Start Application</Link>
               <ArrowRight
                 size={20}
                 className="ml-3 group-hover:translate-x-1 transition-transform duration-300"
@@ -140,9 +137,14 @@ export function AdmissionsSection() {
           <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
             <p className="text-red-100 text-sm">
               Questions? Email us at{" "}
-              <strong className="text-white font-semibold">
-                admissions@zeealpha.edu.ng
-              </strong>
+             <a 
+  href="mailto:admission@zeealphaschools.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-white font-semibold hover:text-blue-200 transition-colors duration-200"
+>
+  admission@zeealphaschools.com
+</a>
             </p>
           </div>
         </div>

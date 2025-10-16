@@ -1,6 +1,7 @@
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const galleryImages = [
   {
@@ -54,7 +55,7 @@ export function GallerySection() {
 
   return (
     <section
-      id="gallery"
+      
       className="relative py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden"
     >
       <div className="absolute inset-0">
@@ -139,7 +140,7 @@ export function GallerySection() {
               academic year.
             </p>
             <button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white cursor-pointer rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl shadow-red-200/50 border-0">
-              View Full Gallery
+            <Link to="/gallery">View Full Gallery</Link>  
             </button>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -124,15 +125,9 @@ export function HeroSection() {
                     size="lg"
                     className="bg-red-700 hover:bg-red-800 text-white border border-red-700"
                   >
-                    Apply for Admission
+                   <Link to="/admissions">Apply for Admission</Link> 
                   </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="text-white border-white hover:bg-white hover:text-gray-900"
-                  >
-                    Take a Tour
-                  </Button>
+                 
                 </div>
               </div>
             </div>

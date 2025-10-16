@@ -1,16 +1,13 @@
+import { useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Separator } from "../ui/separator";
 import {
-  Facebook,
   Mail,
   Phone,
   MapPin,
-  Twitter,
-  Instagram,
-  Youtube,
+  
 } from "lucide-react";
-
 const quickLinks = [
   { label: "Home", href: "#home" },
   { label: "About Us", href: "#about" },
@@ -21,6 +18,8 @@ const quickLinks = [
 ];
 
 export function Footer() {
+
+  const [email, setEmail] = useState("");
   return (
     <footer
       id="contact"
@@ -113,11 +112,17 @@ export function Footer() {
                 International Schools.
               </p>
 
-              <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+              <form onSubmit={(e) => {
+                e.preventDefault()
+                setEmail("")
+              }} className="space-y-4">
                 <div className="relative">
                   <Input
                     type="email"
-                    placeholder="Enter your email address"
+                    name= "email"
+                    placeholder = "Enter your email"
+                    value= {email}
+                    onChange = {(e) => setEmail(e.target.value)}
                     required
                     className="w-full bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 rounded-2xl px-6 py-4 h-14 focus:bg-white/15 focus:border-white/30 transition-all duration-300 border-2"
                   />
@@ -127,9 +132,11 @@ export function Footer() {
                   />
                 </div>
                 <Button
+               
                   type="submit"
                   className="w-full bg-white text-red-600 hover:bg-gray-100 hover:scale-105 cursor-pointer rounded-2xl py-4 h-14 font-semibold text-lg transition-all duration-300 shadow-lg shadow-red-900/30 border-0"
                 >
+                  
                   Subscribe Now
                 </Button>
               </form>

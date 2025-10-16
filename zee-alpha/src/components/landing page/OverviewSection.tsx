@@ -1,11 +1,13 @@
 import { Button } from "../ui/button";
 import { CheckCircle } from "lucide-react";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
+import { Link } from "react-router-dom";
 
 const highlights = [
   "Dedicated and highly qualified teachers",
   "Vibrant extracurricular activities to develop well-rounded students",
 ];
+
 
 export function OverviewSection() {
   return (
@@ -83,7 +85,7 @@ export function OverviewSection() {
                 size="lg"
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-semibold px-8 cursor-pointer"
               >
-                Apply Now
+               <Link to="/admissions">Apply Now</Link> 
               </Button>
 
               <Button

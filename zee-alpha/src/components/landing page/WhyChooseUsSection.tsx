@@ -49,15 +49,28 @@ const highlights = [
 export function WhyChooseUsSection() {
   const [currentPair, setCurrentPair] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Calculate how many pairs we have (each pair shows 2 highlights)
   const totalPairs = Math.ceil(highlights.length / 2);
 
   useEffect(() => {
+    // Check if mobile on mount and resize
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     const timer = setInterval(() => {
       handleNextPair();
     }, 4000); // Change every 4 seconds
-    return () => clearInterval(timer);
+    
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, [currentPair]);
 
   const handleNextPair = () => {
@@ -147,8 +160,12 @@ export function WhyChooseUsSection() {
                   style={{ backgroundImage: `url(${level.image})` }}
                 />
 
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/70 transition-all duration-500" />
+                {/* Dark Overlay - Always visible on mobile, darker on hover for desktop */}
+                <div className={`absolute inset-0 transition-all duration-500 ${
+                  isMobile 
+                    ? "bg-black/60" // Always visible on mobile
+                    : "bg-black/40 group-hover:bg-black/70"
+                }`} />
 
                 {/* Content */}
                 <div className="relative h-full flex flex-col justify-end p-8 text-white">
@@ -162,18 +179,24 @@ export function WhyChooseUsSection() {
                     {level.title}
                   </h4>
 
-                  {/* Description that appears on hover */}
-                  <div className="transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-                    <p className="text-white/90 text-center leading-relaxed text-sm">
+                  {/* Description - Always visible on mobile, appears on hover for desktop */}
+                  <div className={`transition-all duration-500 ease-out ${
+                    isMobile
+                      ? "transform translate-y-0 opacity-100" // Always visible on mobile
+                      : "transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+                  }`}>
+                    <p className="text-white/90 text-center leading-relaxed text-sm md:text-base">
                       {level.description}
                     </p>
                   </div>
                 </div>
 
-                {/* Hover Border Effect */}
-                <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-red-500 to-red-600 bg-clip-padding opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
-                  <div className="rounded-3xl bg-transparent w-full h-full"></div>
-                </div>
+                {/* Hover Border Effect - Only on desktop */}
+                {!isMobile && (
+                  <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-red-500 to-red-600 bg-clip-padding opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+                    <div className="rounded-3xl bg-transparent w-full h-full"></div>
+                  </div>
+                )}
               </Card>
             ))}
           </div>
@@ -190,9 +213,9 @@ export function WhyChooseUsSection() {
             </div>
           </div>
 
-          <div className="relative max-w-5xl mx-auto px-8">
+          <div className="relative max-w-5xl mx-auto px-4 sm:px-8">
             {/* Carousel Container */}
-            <div className="relative bg-gradient-to-br from-white to-gray-50/80 backdrop-blur-xl rounded-3xl shadow-2xl shadow-gray-200/50 border border-gray-100/80 p-8">
+            <div className="relative bg-gradient-to-br from-white to-gray-50/80 backdrop-blur-xl rounded-3xl shadow-2xl shadow-gray-200/50 border border-gray-100/80 p-6 md:p-8">
               <div
                 className={`transition-all duration-700 ease-in-out ${
                   isTransitioning
@@ -200,24 +223,24 @@ export function WhyChooseUsSection() {
                     : "opacity-100 transform scale-100"
                 }`}
               >
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                   {getCurrentPair().map((highlight, index) => (
                     <div
                       key={`${currentPair}-${index}`}
-                      className="group relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-4px]"
+                      className="group relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-4px]"
                     >
                       {/* Background Gradient Effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-white to-red-50/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                       {/* Content */}
-                      <div className="relative flex items-start gap-6">
+                      <div className="relative flex items-start gap-4 md:gap-6">
                         <div className="flex-shrink-0">
-                          <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-red-200/50 group-hover:shadow-xl group-hover:shadow-red-300/50 transition-all duration-500 group-hover:scale-110">
-                            <CheckCircle className="text-white" size={28} />
+                          <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center shadow-lg shadow-red-200/50 group-hover:shadow-xl group-hover:shadow-red-300/50 transition-all duration-500 group-hover:scale-110">
+                            <CheckCircle className="text-white w-5 h-5 md:w-7 md:h-7" />
                           </div>
                         </div>
                         <div className="flex-1 text-left">
-                          <span className="text-xl font-semibold text-gray-900 leading-relaxed tracking-tight">
+                          <span className="text-lg md:text-xl font-semibold text-gray-900 leading-relaxed tracking-tight">
                             {highlight}
                           </span>
                         </div>
@@ -232,11 +255,11 @@ export function WhyChooseUsSection() {
                 </div>
               </div>
 
-              {/* Navigation Arrows */}
+              {/* Navigation Arrows - Hidden on mobile */}
               <button
                 onClick={handlePrevPair}
                 disabled={isTransitioning}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/90 hover:bg-white border border-gray-200/80 text-gray-700 hover:text-red-600 p-3 rounded-2xl shadow-2xl shadow-gray-300/50 hover:shadow-red-200/50 transition-all duration-300 z-10 disabled:opacity-30 disabled:cursor-not-allowed group"
+                className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/90 hover:bg-white border border-gray-200/80 text-gray-700 hover:text-red-600 p-3 rounded-2xl shadow-2xl shadow-gray-300/50 hover:shadow-red-200/50 transition-all duration-300 z-10 disabled:opacity-30 disabled:cursor-not-allowed group"
               >
                 <ChevronLeft
                   size={28}
@@ -246,7 +269,7 @@ export function WhyChooseUsSection() {
               <button
                 onClick={handleNextPair}
                 disabled={isTransitioning}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/90 hover:bg-white border border-gray-200/80 text-gray-700 hover:text-red-600 p-3 rounded-2xl shadow-2xl shadow-gray-300/50 hover:shadow-red-200/50 transition-all duration-300 z-10 disabled:opacity-30 disabled:cursor-not-allowed group"
+                className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/90 hover:bg-white border border-gray-200/80 text-gray-700 hover:text-red-600 p-3 rounded-2xl shadow-2xl shadow-gray-300/50 hover:shadow-red-200/50 transition-all duration-300 z-10 disabled:opacity-30 disabled:cursor-not-allowed group"
               >
                 <ChevronRight
                   size={28}
@@ -256,7 +279,7 @@ export function WhyChooseUsSection() {
             </div>
 
             {/* Carousel Indicators */}
-            <div className="flex justify-center space-x-3 mt-12">
+            <div className="flex justify-center space-x-3 mt-8 md:mt-12">
               {Array.from({ length: totalPairs }).map((_, index) => (
                 <button
                   key={index}
@@ -269,7 +292,7 @@ export function WhyChooseUsSection() {
                   }}
                   className={`relative rounded-full transition-all duration-500 ease-out ${
                     index === currentPair
-                      ? "w-12 bg-gradient-to-r from-red-600 to-red-500 shadow-lg shadow-red-200/50"
+                      ? "w-8 md:w-12 bg-gradient-to-r from-red-600 to-red-500 shadow-lg shadow-red-200/50"
                       : "w-3 bg-gray-300 hover:bg-gray-400 hover:scale-110"
                   } h-3`}
                   disabled={isTransitioning}
@@ -282,7 +305,12 @@ export function WhyChooseUsSection() {
               ))}
             </div>
 
-            {/* Progress Indicator */}
+            {/* Mobile Navigation Instructions */}
+            {isMobile && (
+              <p className="text-gray-600 text-sm mt-4">
+                Swipe or tap indicators to navigate
+              </p>
+            )}
           </div>
         </div>
       </div>
