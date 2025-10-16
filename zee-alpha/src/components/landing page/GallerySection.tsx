@@ -1,4 +1,4 @@
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -6,32 +6,32 @@ const galleryImages = [
   {
     src: "/images/3 little engineers.jpeg",
     alt: "Little engineers",
-    category: "STEM"
+    category: "STEM",
   },
   {
     src: "/images/3 students posing.jpeg",
     alt: "Students posing",
-    category: "Student Life"
+    category: "Student Life",
   },
   {
     src: "/images/award wining girl 1.jpeg",
     alt: "Award winning student",
-    category: "Achievements"
+    category: "Achievements",
   },
   {
     src: "/images/award winning student 1.jpeg",
     alt: "Award winning student",
-    category: "Achievements"
+    category: "Achievements",
   },
   {
     src: "/images/basic-tech-1.jpeg",
     alt: "Science lab activities",
-    category: "STEM"
+    category: "STEM",
   },
   {
     src: "/images/engineer drawing.jpeg",
     alt: "Little engineer drawing",
-    category: "STEM"
+    category: "STEM",
   },
 ];
 
@@ -46,16 +46,21 @@ export function GallerySection() {
 
   const prevImage = () => {
     if (selectedImage !== null) {
-      setSelectedImage((prev) => (prev! - 1 + galleryImages.length) % galleryImages.length);
+      setSelectedImage(
+        (prev) => (prev! - 1 + galleryImages.length) % galleryImages.length
+      );
     }
   };
 
   return (
-    <section id="gallery" className="relative py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
-         <div className="absolute inset-0">
+    <section
+      id="gallery"
+      className="relative py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden"
+    >
+      <div className="absolute inset-0">
         {/* Animated floating shapes */}
         <div className="absolute bottom-70 right-10 w-52 h-52 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-      
+
         <div
           className="absolute  top-40 left-1/3  w-40 h-40 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
           style={{ animationDelay: "4s" }}
@@ -69,7 +74,7 @@ export function GallerySection() {
           }}
         ></div>
       </div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
@@ -80,16 +85,17 @@ export function GallerySection() {
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-500 rounded-full mb-6"></div>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Explore our vibrant school community through photos of students, staff, facilities, 
-            activities, and our inspiring learning environment that fosters growth and excellence.
+            Explore our vibrant school community through photos of students,
+            staff, facilities, activities, and our inspiring learning
+            environment that fosters growth and excellence.
           </p>
         </div>
 
         {/* Gallery Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {galleryImages.map((image, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="group relative bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-8px] cursor-pointer"
               onClick={() => setSelectedImage(index)}
             >
@@ -110,8 +116,6 @@ export function GallerySection() {
                     <div className="w-2 h-2 bg-white rounded-full"></div>
                     {image.category}
                   </div>
-                  
-                 
                 </div>
               </div>
 
@@ -130,8 +134,9 @@ export function GallerySection() {
               Discover More Memories
             </h3>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
-              Explore our complete photo collection showcasing student achievements, 
-              campus life, and memorable moments throughout the academic year.
+              Explore our complete photo collection showcasing student
+              achievements, campus life, and memorable moments throughout the
+              academic year.
             </p>
             <button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white cursor-pointer rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl shadow-red-200/50 border-0">
               View Full Gallery

@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Button } from "./ui/button";
-import { Card } from "./ui/card";
-import { Input } from "./ui/input";
-import { Label } from "./ui/label";
-import { Textarea } from "./ui/textarea";
+import { Button } from "../ui/button";
+import { Card } from "../ui/card";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
+import { Textarea } from "../ui/textarea";
 import {
   Dialog,
   DialogContent,
@@ -12,7 +12,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
+} from "../ui/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,16 +22,22 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-} from "./ui/alert-dialog";
+} from "../ui/alert-dialog";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "./ui/select";
-import { Plus, Pencil, Trash2, Image as ImageIcon, ArrowLeft } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+} from "../ui/select";
+import {
+  Plus,
+  Pencil,
+  Trash2,
+  Image as ImageIcon,
+  ArrowLeft,
+} from "lucide-react";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 
 interface GalleryDashboardProps {
   onNavigate?: (page: string) => void;
@@ -64,15 +70,15 @@ export function GalleryDashboard({ onNavigate }: GalleryDashboardProps) {
       name: "School Campus",
       description: "Beautiful view of our main campus building",
       category: "Campus & Facilities",
-      dateAdded: new Date().toISOString().split('T')[0],
+      dateAdded: new Date().toISOString().split("T")[0],
     },
     {
       id: "2",
       url: "/images/class picture with teachers.jpeg",
       name: "Students in Class",
       description: "Students engaged in interactive learning",
-      category: "Students & Learning", 
-      dateAdded: new Date().toISOString().split('T')[0],
+      category: "Students & Learning",
+      dateAdded: new Date().toISOString().split("T")[0],
     },
   ]);
 
@@ -111,7 +117,7 @@ export function GalleryDashboard({ onNavigate }: GalleryDashboardProps) {
       name: formData.name,
       description: formData.description,
       category: formData.category,
-      dateAdded: new Date().toISOString().split('T')[0],
+      dateAdded: new Date().toISOString().split("T")[0],
     };
 
     setImages([...images, newImage]);
@@ -169,7 +175,7 @@ export function GalleryDashboard({ onNavigate }: GalleryDashboardProps) {
         <div className="mb-6">
           <Button
             variant="outline"
-            onClick={() => onNavigate && onNavigate('home')}
+            onClick={() => onNavigate && onNavigate("home")}
             className="gap-2"
           >
             <ArrowLeft size={16} />
@@ -216,7 +222,8 @@ export function GalleryDashboard({ onNavigate }: GalleryDashboardProps) {
               <DialogHeader>
                 <DialogTitle>Add New Image</DialogTitle>
                 <DialogDescription>
-                  Add a new image to your gallery. Provide an image URL and details.
+                  Add a new image to your gallery. Provide an image URL and
+                  details.
                 </DialogDescription>
               </DialogHeader>
               <div className="grid gap-4 py-4">
@@ -305,7 +312,10 @@ export function GalleryDashboard({ onNavigate }: GalleryDashboardProps) {
         {/* Gallery Grid */}
         {filteredImages.length === 0 ? (
           <Card className="p-12 text-center">
-            <ImageIcon className="mx-auto mb-4 text-muted-foreground" size={48} />
+            <ImageIcon
+              className="mx-auto mb-4 text-muted-foreground"
+              size={48}
+            />
             <h3 className="mb-2">No Images Found</h3>
             <p className="text-muted-foreground mb-6">
               {filterCategory === "all"
@@ -358,7 +368,9 @@ export function GalleryDashboard({ onNavigate }: GalleryDashboardProps) {
                     <span className="px-2 py-1 bg-red-100 text-red-600 rounded">
                       {image.category}
                     </span>
-                    <span className="text-muted-foreground">{image.dateAdded}</span>
+                    <span className="text-muted-foreground">
+                      {image.dateAdded}
+                    </span>
                   </div>
                 </div>
               </Card>

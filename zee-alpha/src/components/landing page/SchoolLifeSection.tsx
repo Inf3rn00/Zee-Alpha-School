@@ -1,6 +1,16 @@
-import { Card, CardContent } from "./ui/card";
-import { Users, UserCog, DoorOpen, CheckCircle, Heart, Bus, Calendar, Shield, Trophy } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { Card, CardContent } from "../ui/card";
+import {
+  Users,
+  UserCog,
+  DoorOpen,
+  CheckCircle,
+  Heart,
+  Bus,
+  Calendar,
+  Shield,
+  Trophy,
+} from "lucide-react";
+import { ImageWithFallback } from "../figma/ImageWithFallback";
 
 const lifeCards = [
   {
@@ -9,9 +19,9 @@ const lifeCards = [
     image: "/images/student-mentor.jpeg",
     items: [
       "Debate, drama, art, and music clubs",
-      "Coding and robotics programs", 
-      "Dance and cultural activities"
-    ]
+      "Coding and robotics programs",
+      "Dance and cultural activities",
+    ],
   },
   {
     icon: Trophy,
@@ -20,8 +30,8 @@ const lifeCards = [
     items: [
       "Football and basketball teams",
       "Athletics and track-racing",
-      "Volleyball programs"
-    ]
+      "Volleyball programs",
+    ],
   },
   {
     icon: Heart,
@@ -30,20 +40,19 @@ const lifeCards = [
     items: [
       "Leadership training programs",
       "Community service initiatives",
-      "Mentorship opportunities"
-    ]
+      "Mentorship opportunities",
+    ],
   },
   {
     icon: Calendar,
     title: "Social Activities",
     image: "/images/students-radio.jpeg",
     items: [
-      
-      "Children's day events", 
+      "Children's day events",
       "Inter-house sports competitions",
       "End of year class parties",
-      "Academic & non-academic competitions"
-    ]
+      "Academic & non-academic competitions",
+    ],
   },
   {
     icon: Shield,
@@ -52,27 +61,31 @@ const lifeCards = [
     items: [
       "On-site sick bay and first aid",
       "Guidance and counselling services",
-      "Safe and supportive environment"
-    ]
+      "Safe and supportive environment",
+    ],
   },
   {
     icon: Bus,
     title: "Transportation",
     image: "/images/nigerian_students_cream_bowties_distinct_faces.jpg",
-    description: "Our adequate and reliable school buses are available at strategic points in each of our locations (Katsina, Kaduna, and Abuja). They function optimally, with licensed and trained drivers.",
-  }
+    description:
+      "Our adequate and reliable school buses are available at strategic points in each of our locations (Katsina, Kaduna, and Abuja). They function optimally, with licensed and trained drivers.",
+  },
 ];
 
 export function SchoolLifeSection() {
   return (
-    <section id="school-life" className="relative py-24 bg-gradient-to-br from-white to-gray-50 overflow-hidden">
-          {/* Animated Background */}
+    <section
+      id="school-life"
+      className="relative py-24 bg-gradient-to-br from-white to-gray-50 overflow-hidden"
+    >
+      {/* Animated Background */}
       <div className="absolute inset-0">
         {/* Animated floating shapes */}
         <div
           className="absolute bottom-20 left-1/3 w-52 h-52 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
           style={{ animationDelay: "4s" }}
-          ></div>
+        ></div>
         <div
           className="absolute top-100 right-50 w-48 h-48 bg-yellow-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse"
           style={{ animationDelay: "2s" }}
@@ -86,7 +99,7 @@ export function SchoolLifeSection() {
           }}
         ></div>
       </div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
@@ -97,8 +110,9 @@ export function SchoolLifeSection() {
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-500 rounded-full mb-6"></div>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Life at Zee-Alpha is rich with opportunities for students and pupils to explore their 
-            talents, passions, and dreams in a vibrant, supportive community.
+            Life at Zee-Alpha is rich with opportunities for students and pupils
+            to explore their talents, passions, and dreams in a vibrant,
+            supportive community.
           </p>
         </div>
 
@@ -116,7 +130,7 @@ export function SchoolLifeSection() {
                   />
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-                  
+
                   {/* Icon Badge */}
                   <div className="absolute top-4 left-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center group-hover:scale-110 transition-all duration-500">
                     <card.icon className="text-white" size={24} />
@@ -129,13 +143,19 @@ export function SchoolLifeSection() {
                   <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-700 transition-colors duration-300">
                     {card.title}
                   </h3>
-                  
+
                   {/* Content */}
                   {card.items ? (
                     <ul className="space-y-3 flex-1">
                       {card.items.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-start gap-3 group/item">
-                          <CheckCircle className="text-red-500 mt-0.5 flex-shrink-0 group-hover/item:text-red-600 transition-colors duration-300" size={18} />
+                        <li
+                          key={itemIndex}
+                          className="flex items-start gap-3 group/item"
+                        >
+                          <CheckCircle
+                            className="text-red-500 mt-0.5 flex-shrink-0 group-hover/item:text-red-600 transition-colors duration-300"
+                            size={18}
+                          />
                           <span className="text-gray-600 text-sm leading-relaxed group-hover/item:text-gray-900 transition-colors duration-300">
                             {item}
                           </span>
@@ -173,7 +193,8 @@ export function SchoolLifeSection() {
                   </h3>
                 </div>
                 <p className="text-gray-600 text-lg leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
-                  Join our PTA discussions monthly to get acquainted with the happenings in the environment and bring your concerns to us.
+                  Join our PTA discussions monthly to get acquainted with the
+                  happenings in the environment and bring your concerns to us.
                 </p>
               </CardContent>
 
@@ -197,7 +218,9 @@ export function SchoolLifeSection() {
                   </h3>
                 </div>
                 <p className="text-gray-600 text-lg leading-relaxed group-hover:text-gray-900 transition-colors duration-300">
-                  Our open days hold once a term, where parents come into school during school hours and witness how students behave in class and discuss issues concerning your child.
+                  Our open days hold once a term, where parents come into school
+                  during school hours and witness how students behave in class
+                  and discuss issues concerning your child.
                 </p>
               </CardContent>
 

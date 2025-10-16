@@ -1,7 +1,15 @@
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Separator } from "./ui/separator";
-import { Facebook, Mail, Phone, MapPin, Twitter, Instagram, Youtube } from "lucide-react";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Separator } from "../ui/separator";
+import {
+  Facebook,
+  Mail,
+  Phone,
+  MapPin,
+  Twitter,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 
 const quickLinks = [
   { label: "Home", href: "#home" },
@@ -22,13 +30,15 @@ export function Footer() {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent"></div>
       </div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid lg:grid-cols-3 gap-12">
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold mb-8 tracking-tight">Get In Touch</h3>
+              <h3 className="text-2xl font-bold mb-8 tracking-tight">
+                Get In Touch
+              </h3>
               <div className="space-y-6">
                 <div className="flex items-start gap-4 group cursor-pointer">
                   <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
@@ -58,19 +68,23 @@ export function Footer() {
                   </div>
                   <div className="flex-1">
                     <p className="font-semibold text-white/90">Email Address</p>
-                    <p className="text-white/70 text-sm mt-1">info@zeealpha.edu.ng</p>
-                    <p className="text-white/70 text-sm mt-1">admissions@zeealpha.edu.ng</p>
+                    <p className="text-white/70 text-sm mt-1">
+                      info@zeealpha.edu.ng
+                    </p>
+                    <p className="text-white/70 text-sm mt-1">
+                      admissions@zeealpha.edu.ng
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-
-           
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-2xl font-bold mb-8 tracking-tight">Quick Links</h3>
+            <h3 className="text-2xl font-bold mb-8 tracking-tight">
+              Quick Links
+            </h3>
             <div className="grid grid-cols-2 gap-4">
               {quickLinks.map((link, index) => (
                 <a
@@ -89,11 +103,14 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-2xl font-bold mb-8 tracking-tight">Stay Updated</h3>
+            <h3 className="text-2xl font-bold mb-8 tracking-tight">
+              Stay Updated
+            </h3>
             <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
               <p className="text-white/80 mb-6 leading-relaxed">
-                Subscribe to our newsletter for the latest updates on admissions, 
-                events, and educational insights from Zee-Alpha International Schools.
+                Subscribe to our newsletter for the latest updates on
+                admissions, events, and educational insights from Zee-Alpha
+                International Schools.
               </p>
 
               <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
@@ -104,7 +121,10 @@ export function Footer() {
                     required
                     className="w-full bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 rounded-2xl px-6 py-4 h-14 focus:bg-white/15 focus:border-white/30 transition-all duration-300 border-2"
                   />
-                  <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40" size={20} />
+                  <Mail
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40"
+                    size={20}
+                  />
                 </div>
                 <Button
                   type="submit"
@@ -123,10 +143,10 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-white/70 text-sm">
               <p>
-                &copy; 2025 Zee-Alpha International Schools. All Rights Reserved.
+                &copy; 2025 Zee-Alpha International Schools. All Rights
+                Reserved.
               </p>
             </div>
-           
           </div>
         </div>
       </div>

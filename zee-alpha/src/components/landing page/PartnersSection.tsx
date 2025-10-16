@@ -1,4 +1,4 @@
-import { Card } from "./ui/card";
+import { Card } from "../ui/card";
 
 const partners = [
   {
@@ -24,7 +24,7 @@ const partners = [
 export function PartnersSection() {
   return (
     <section className="relative py-24 bg-gradient-to-br from-white to-gray-50 overflow-hidden">
-        {/* Animated Background */}
+      {/* Animated Background */}
       <div className="absolute inset-0">
         {/* Animated floating shapes */}
         <div className="absolute bottom-70 left-10 w-52 h-52 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
@@ -45,7 +45,7 @@ export function PartnersSection() {
           }}
         ></div>
       </div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
@@ -56,8 +56,9 @@ export function PartnersSection() {
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-500 rounded-full mb-6"></div>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We collaborate with leading educational organizations and examination bodies to provide 
-            the best opportunities and internationally recognized qualifications for our students
+            We collaborate with leading educational organizations and
+            examination bodies to provide the best opportunities and
+            internationally recognized qualifications for our students
           </p>
         </div>
 
@@ -70,7 +71,7 @@ export function PartnersSection() {
             >
               {/* Background Gradient Effect on Hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-white to-red-50/20 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+
               {/* Content */}
               <div className="relative flex flex-col items-center gap-6">
                 {/* Logo Container */}
@@ -81,7 +82,7 @@ export function PartnersSection() {
                     className="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-500"
                   />
                 </div>
-                
+
                 {/* Partner Name */}
                 <div className="text-center">
                   <h3 className="text-lg font-semibold text-gray-900 tracking-tight group-hover:text-red-700 transition-colors duration-300">
@@ -103,7 +104,11 @@ export function PartnersSection() {
           <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-2xl px-8 py-4 shadow-lg shadow-gray-200/50 border border-gray-200/60">
             <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
             <span className="text-sm font-medium text-gray-700 tracking-wide">
-              Trusted by <span className="text-red-600 font-semibold">leading educational bodies</span> worldwide
+              Trusted by{" "}
+              <span className="text-red-600 font-semibold">
+                leading educational bodies
+              </span>{" "}
+              worldwide
             </span>
           </div>
         </div>

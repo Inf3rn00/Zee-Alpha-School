@@ -1,5 +1,5 @@
-import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
+import { Button } from "../ui/button";
+import { Card, CardContent } from "../ui/card";
 import { ArrowRight } from "lucide-react";
 
 const admissionSteps = [
@@ -30,13 +30,14 @@ const admissionSteps = [
 
 export function AdmissionsSection() {
   return (
-    <section id="admissions" className="relative py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
-          {/* Animated Background */}
+    <section
+      id="admissions"
+      className="relative py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden"
+    >
+      {/* Animated Background */}
       <div className="absolute inset-0">
         {/* Animated floating shapes */}
         <div className="absolute top-20 left-10 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-      
-      
 
         {/* Subtle pattern overlay */}
         <div
@@ -46,7 +47,7 @@ export function AdmissionsSection() {
           }}
         ></div>
       </div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
@@ -57,8 +58,9 @@ export function AdmissionsSection() {
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-500 rounded-full mb-6"></div>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Choosing the right school for your child is an important decision. We're committed to making 
-            the admission process smooth, transparent, and welcoming for every family.
+            Choosing the right school for your child is an important decision.
+            We're committed to making the admission process smooth, transparent,
+            and welcoming for every family.
           </p>
         </div>
 
@@ -96,7 +98,10 @@ export function AdmissionsSection() {
                 {index < admissionSteps.length - 1 && (
                   <div className="hidden lg:block absolute -right-4 top-1/2 transform -translate-y-1/2 z-10">
                     <div className="w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg shadow-gray-200/50 border border-gray-200/60 group-hover:bg-red-500 group-hover:text-white transition-all duration-300">
-                      <ArrowRight size={16} className="text-gray-600 group-hover:text-white transition-colors duration-300" />
+                      <ArrowRight
+                        size={16}
+                        className="text-gray-600 group-hover:text-white transition-colors duration-300"
+                      />
                     </div>
                   </div>
                 )}
@@ -120,19 +125,24 @@ export function AdmissionsSection() {
             Ready to Join Zee-Alpha?
           </h3>
           <p className="text-red-100 text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
-            Take the first step towards an enriching educational experience. Start your admission journey with us today.
+            Take the first step towards an enriching educational experience.
+            Start your admission journey with us today.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
             <Button className="bg-white hover:bg-gray-100 text-red-600 cursor-pointer rounded-2xl px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl shadow-red-900/30 border-0 group">
               Start Application
-              <ArrowRight size={20} className="ml-3 group-hover:translate-x-1 transition-transform duration-300" />
+              <ArrowRight
+                size={20}
+                className="ml-3 group-hover:translate-x-1 transition-transform duration-300"
+              />
             </Button>
-            
           </div>
           <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
-          
             <p className="text-red-100 text-sm">
-              Questions? Email us at <strong className="text-white font-semibold">admissions@zeealpha.edu.ng</strong>
+              Questions? Email us at{" "}
+              <strong className="text-white font-semibold">
+                admissions@zeealpha.edu.ng
+              </strong>
             </p>
           </div>
         </div>

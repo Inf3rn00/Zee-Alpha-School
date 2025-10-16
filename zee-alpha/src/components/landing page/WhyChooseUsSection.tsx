@@ -1,5 +1,12 @@
-import { Card } from "./ui/card";
-import { CheckCircle, Star, BookOpen, Award, ChevronLeft, ChevronRight } from "lucide-react";
+import { Card } from "../ui/card";
+import {
+  CheckCircle,
+  Star,
+  BookOpen,
+  Award,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 
 const curriculumLevels = [
@@ -74,15 +81,17 @@ export function WhyChooseUsSection() {
   };
 
   return (
-    <section id="why-choose-us" className="relative py-24 bg-gradient-to-br from-gray-50 to-gray-50 overflow-hidden">
-         {/* Animated Background */}
+    <section
+      id="why-choose-us"
+      className="relative py-24 bg-gradient-to-br from-gray-50 to-gray-50 overflow-hidden"
+    >
+      {/* Animated Background */}
       <div className="absolute inset-0">
-       <div
+        <div
           className="absolute top-20 left-1/10 w-52 h-52 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"
           style={{ animationDelay: "4s" }}
-          
         ></div>
-          <div
+        <div
           className="absolute bottom-40 right-20 w-48 h-48 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-pulse"
           style={{ animationDelay: "2s" }}
         ></div>
@@ -147,7 +156,7 @@ export function WhyChooseUsSection() {
                   <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-all duration-500">
                     {level.icon}
                   </div>
-                  
+
                   {/* Title */}
                   <h4 className="text-xl font-bold text-center mb-4 group-hover:text-red-100 transition-colors duration-300">
                     {level.title}
@@ -180,11 +189,17 @@ export function WhyChooseUsSection() {
               <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-500 rounded-full mb-6"></div>
             </div>
           </div>
-          
+
           <div className="relative max-w-5xl mx-auto px-8">
             {/* Carousel Container */}
             <div className="relative bg-gradient-to-br from-white to-gray-50/80 backdrop-blur-xl rounded-3xl shadow-2xl shadow-gray-200/50 border border-gray-100/80 p-8">
-              <div className={`transition-all duration-700 ease-in-out ${isTransitioning ? 'opacity-0 transform scale-95' : 'opacity-100 transform scale-100'}`}>
+              <div
+                className={`transition-all duration-700 ease-in-out ${
+                  isTransitioning
+                    ? "opacity-0 transform scale-95"
+                    : "opacity-100 transform scale-100"
+                }`}
+              >
                 <div className="grid md:grid-cols-2 gap-8">
                   {getCurrentPair().map((highlight, index) => (
                     <div
@@ -193,7 +208,7 @@ export function WhyChooseUsSection() {
                     >
                       {/* Background Gradient Effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-white to-red-50/30 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      
+
                       {/* Content */}
                       <div className="relative flex items-start gap-6">
                         <div className="flex-shrink-0">
@@ -207,7 +222,7 @@ export function WhyChooseUsSection() {
                           </span>
                         </div>
                       </div>
-                      
+
                       {/* Hover Border Effect */}
                       <div className="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-red-500 to-red-600 bg-clip-padding opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
                         <div className="rounded-2xl bg-white w-full h-full"></div>
@@ -223,14 +238,20 @@ export function WhyChooseUsSection() {
                 disabled={isTransitioning}
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/90 hover:bg-white border border-gray-200/80 text-gray-700 hover:text-red-600 p-3 rounded-2xl shadow-2xl shadow-gray-300/50 hover:shadow-red-200/50 transition-all duration-300 z-10 disabled:opacity-30 disabled:cursor-not-allowed group"
               >
-                <ChevronLeft size={28} className="group-hover:scale-110 transition-transform duration-300" />
+                <ChevronLeft
+                  size={28}
+                  className="group-hover:scale-110 transition-transform duration-300"
+                />
               </button>
               <button
                 onClick={handleNextPair}
                 disabled={isTransitioning}
                 className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/90 hover:bg-white border border-gray-200/80 text-gray-700 hover:text-red-600 p-3 rounded-2xl shadow-2xl shadow-gray-300/50 hover:shadow-red-200/50 transition-all duration-300 z-10 disabled:opacity-30 disabled:cursor-not-allowed group"
               >
-                <ChevronRight size={28} className="group-hover:scale-110 transition-transform duration-300" />
+                <ChevronRight
+                  size={28}
+                  className="group-hover:scale-110 transition-transform duration-300"
+                />
               </button>
             </div>
 
@@ -247,9 +268,9 @@ export function WhyChooseUsSection() {
                     }
                   }}
                   className={`relative rounded-full transition-all duration-500 ease-out ${
-                    index === currentPair 
-                      ? 'w-12 bg-gradient-to-r from-red-600 to-red-500 shadow-lg shadow-red-200/50' 
-                      : 'w-3 bg-gray-300 hover:bg-gray-400 hover:scale-110'
+                    index === currentPair
+                      ? "w-12 bg-gradient-to-r from-red-600 to-red-500 shadow-lg shadow-red-200/50"
+                      : "w-3 bg-gray-300 hover:bg-gray-400 hover:scale-110"
                   } h-3`}
                   disabled={isTransitioning}
                 >
@@ -262,7 +283,6 @@ export function WhyChooseUsSection() {
             </div>
 
             {/* Progress Indicator */}
-
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Card } from "./ui/card";
+import { Card } from "../ui/card";
 import {
   User,
   Mail,
@@ -70,8 +70,6 @@ export function AboutSection() {
       id="about"
       className="relative py-24 bg-gradient-to-b from-[#1E3A8A] via-[#1e40af] to-[#1E3A8A] text-white overflow-hidden"
     >
-     
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-20">
@@ -125,8 +123,8 @@ export function AboutSection() {
                   </h4>
                 </div>
                 <p className="text-white/80 /80 transition-colors duration-300">
-                  To empower students with knowledge, creativity, and character to
-                  succeed in a dynamic world.
+                  To empower students with knowledge, creativity, and character
+                  to succeed in a dynamic world.
                 </p>
 
                 {/* Hover Border Effect */}
@@ -148,8 +146,8 @@ export function AboutSection() {
                   </h4>
                 </div>
                 <p className="text-white/80 /80 transition-colors duration-300">
-                  To be a global center of excellence where learners are inspired
-                  to reach their full potential.
+                  To be a global center of excellence where learners are
+                  inspired to reach their full potential.
                 </p>
 
                 {/* Hover Border Effect */}
@@ -182,12 +180,12 @@ export function AboutSection() {
                   <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-500 ">
                     <value.icon className="text-white" size={28} />
                   </div>
-                  
+
                   {/* Title */}
                   <h4 className="text-xl font-bold text-white mb-4  transition-colors duration-300">
                     {value.title}
                   </h4>
-                  
+
                   {/* Description */}
                   <p className="text-white/80 text-sm leading-relaxed /80 transition-colors duration-300">
                     {value.description}
@@ -202,8 +200,6 @@ export function AboutSection() {
             ))}
           </div>
         </div>
-
-        
       </div>
     </section>
   );

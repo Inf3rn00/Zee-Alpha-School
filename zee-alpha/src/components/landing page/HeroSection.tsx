@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
@@ -7,43 +7,50 @@ const slides = [
     image: "/images/playground1.jpeg",
     title: "ZEE-ALPHA INTERNATIONAL SCHOOLS",
     subtitle: "Excellence Through Knowledge, Character Through Values",
-    description: "Empowering global citizens through innovative education and moral excellence.",
+    description:
+      "Empowering global citizens through innovative education and moral excellence.",
   },
   {
     image: "/images/students-in-ict-main.jpeg",
     title: "Scientific Excellence",
     subtitle: "Innovation Through Discovery",
-    description: "State-of-the-art laboratories fostering scientific inquiry and technological advancement.",
+    description:
+      "State-of-the-art laboratories fostering scientific inquiry and technological advancement.",
   },
   {
     image: "/images/nig-group-pic.jpeg",
     title: "Global Cultures Hub",
     subtitle: "Celebrating World Heritage",
-    description: "A multicultural space featuring literature, artifacts, and resources from diverse cultures worldwide.",
+    description:
+      "A multicultural space featuring literature, artifacts, and resources from diverse cultures worldwide.",
   },
   {
     image: "/images/green vs blue house .jpeg",
     title: "Sports Excellence",
     subtitle: "Building Champions in Life",
-    description: "Comprehensive sports programs developing physical fitness, teamwork, and competitive spirit.",
+    description:
+      "Comprehensive sports programs developing physical fitness, teamwork, and competitive spirit.",
   },
   {
-    image: "/images/students showcasing images.jpeg", 
+    image: "/images/students showcasing images.jpeg",
     title: "Creative Arts",
     subtitle: "Inspiring Imagination",
-    description: "Nurturing creativity and artistic expression through comprehensive arts education programs.",
+    description:
+      "Nurturing creativity and artistic expression through comprehensive arts education programs.",
   },
   {
     image: "/images/book day group.jpeg",
     title: "Young World Readers",
     subtitle: "Stories from Every Culture",
-    description: "Engaging multicultural storybooks and reading programs that introduce children to diverse traditions.",
+    description:
+      "Engaging multicultural storybooks and reading programs that introduce children to diverse traditions.",
   },
   {
     image: "/images/primary grad pics (mixed).jpeg",
     title: "Achievement & Success",
     subtitle: "Celebrating Excellence",
-    description: "Recognizing the achievements of our graduates as they embark on their journey to change the world.",
+    description:
+      "Recognizing the achievements of our graduates as they embark on their journey to change the world.",
   },
 ];
 
@@ -56,7 +63,7 @@ export function HeroSection() {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
-    
+
     return () => clearInterval(timer);
   }, []); // ✅ Empty dependency array
 
@@ -83,7 +90,9 @@ export function HeroSection() {
         <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? "opacity-100 z-10" : "opacity-0 pointer-events-none z-0"
+            index === currentSlide
+              ? "opacity-100 z-10"
+              : "opacity-0 pointer-events-none z-0"
           }`}
         >
           {/* Image background */}
