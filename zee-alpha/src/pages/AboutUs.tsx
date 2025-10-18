@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { Card } from "../components/ui/card";
 import { Header } from "../components/landing page/Header";
+import { Link } from "react-router-dom";
 
 const teamMembers = [
   {
@@ -130,7 +131,7 @@ export default function AboutPage() {
             <div className="relative">
               <Card className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-200">
                 <img
-                  src="/images/school-campus.jpg"
+                  src="/images/students in class 2.jpeg"
                   alt="Zee-Alpha School Campus"
                   className="w-full h-64 object-cover rounded-2xl mb-6"
                 />
@@ -339,12 +340,12 @@ export default function AboutPage() {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+            <Link to="/admissions">
             <button className="bg-white hover:bg-gray-100 text-red-600 rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-2xl">
-              Schedule Campus Tour
-            </button>
-            <button className="border-2 border-white text-white hover:bg-white/10 rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300">
               Contact Admissions
             </button>
+            </Link>
+          
           </div>
 
           <div className="border-t border-red-500/30 pt-8 mt-12">

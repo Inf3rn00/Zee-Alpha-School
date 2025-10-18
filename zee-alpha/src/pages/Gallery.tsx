@@ -1,6 +1,14 @@
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { useState } from "react";
-import { X, ChevronLeft, ChevronRight, Filter, Grid3X3, LayoutGrid, CheckCircle } from "lucide-react";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Filter,
+  Grid3X3,
+  LayoutGrid,
+  CheckCircle,
+} from "lucide-react";
 import { Header } from "../components/landing page/Header";
 import { Card } from "../components/ui/card";
 
@@ -8,7 +16,8 @@ const galleryImages = [
   {
     src: "/images/3 little engineers.jpeg",
     alt: "Little engineers",
-    category: "STEM",  },
+    category: "STEM",
+  },
   {
     src: "/images/3 students posing.jpeg",
     alt: "Students posing",
@@ -17,7 +26,8 @@ const galleryImages = [
   {
     src: "/images/award wining girl 1.jpeg",
     alt: "Award winning student",
-    category: "Achievements",  },
+    category: "Achievements",
+  },
   {
     src: "/images/award winning student 1.jpeg",
     alt: "Award winning student",
@@ -26,7 +36,8 @@ const galleryImages = [
   {
     src: "/images/basic-tech-1.jpeg",
     alt: "Science lab activities",
-    category: "STEM",  },
+    category: "STEM",
+  },
   {
     src: "/images/engineer drawing.jpeg",
     alt: "Little engineer drawing",
@@ -35,7 +46,8 @@ const galleryImages = [
   {
     src: "/images/primary students with red group picture.jpeg",
     alt: "Primary students group photo",
-    category: "Student Life",  },
+    category: "Student Life",
+  },
   {
     src: "/images/student-speech.jpeg",
     alt: "Student giving speech",
@@ -44,7 +56,8 @@ const galleryImages = [
   {
     src: "/images/students-radio.jpeg",
     alt: "Students at radio station",
-    category: "Activities",  },
+    category: "Activities",
+  },
   {
     src: "/images/red-house-vs-yellow-house-volleyball.jpeg",
     alt: "Volleyball match",
@@ -53,12 +66,13 @@ const galleryImages = [
   {
     src: "/images/student-mentor.jpeg",
     alt: "Student mentorship",
-    category: "Student Life",  },
+    category: "Student Life",
+  },
   {
     src: "/images/nigerian_students_cream_bowties_distinct_faces.jpg",
     alt: "Students in uniform",
     category: "Student Life",
-  }
+  },
 ];
 
 export function Gallery() {
@@ -67,12 +81,16 @@ export function Gallery() {
   const [viewMode, setViewMode] = useState<"grid" | "masonry">("masonry");
 
   // Get unique categories
-  const categories = ["All", ...new Set(galleryImages.map(img => img.category))];
+  const categories = [
+    "All",
+    ...new Set(galleryImages.map((img) => img.category)),
+  ];
 
   // Filter images based on selected category
-  const filteredImages = activeCategory === "All" 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === activeCategory);
+  const filteredImages =
+    activeCategory === "All"
+      ? galleryImages
+      : galleryImages.filter((img) => img.category === activeCategory);
 
   const nextImage = () => {
     if (selectedImage !== null) {
@@ -88,27 +106,28 @@ export function Gallery() {
     }
   };
 
- function getCurrentYear(): number {
-  return new Date().getFullYear();
-}
+  function getCurrentYear(): number {
+    return new Date().getFullYear();
+  }
 
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      
+
       {/* Hero Section - Using Admissions styling */}
       <section className="relative py-20 bg-gradient-to-br from-red-600 to-red-700 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-white to-transparent"></div>
         </div>
-        
+
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
             Photo Gallery
           </h1>
           <div className="w-32 h-1 bg-white rounded-full mx-auto mb-8"></div>
           <p className="text-xl md:text-2xl text-white/90 max-w-4xl mx-auto leading-relaxed">
-            Capturing the vibrant moments, achievements, and daily life at Zee-Alpha International Schools
+            Capturing the vibrant moments, achievements, and daily life at
+            Zee-Alpha International Schools
           </p>
         </div>
       </section>
@@ -117,36 +136,53 @@ export function Gallery() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Explore Our Gallery</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              Explore Our Gallery
+            </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-red-600 to-red-500 rounded-full mb-8"></div>
-            
+
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
               <p>
-                Step into the vibrant world of Zee-Alpha International Schools through our photo gallery. 
-                Each image tells a story of academic excellence, personal growth, and the joyful moments 
-                that make our school community so special.
+                Step into the vibrant world of Zee-Alpha International Schools
+                through our photo gallery. Each image tells a story of academic
+                excellence, personal growth, and the joyful moments that make
+                our school community so special.
               </p>
-              
+
               <p>
-                From classroom activities and sports events to cultural celebrations and academic achievements, 
-                our gallery showcases the diverse experiences that shape our students' educational journey.
+                From classroom activities and sports events to cultural
+                celebrations and academic achievements, our gallery showcases
+                the diverse experiences that shape our students' educational
+                journey.
               </p>
 
               <div className="grid grid-cols-2 gap-6 mt-8">
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="text-red-600 flex-shrink-0" size={20} />
+                  <CheckCircle
+                    className="text-red-600 flex-shrink-0"
+                    size={20}
+                  />
                   <span className="text-gray-700">High-Quality Images</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="text-red-600 flex-shrink-0" size={20} />
+                  <CheckCircle
+                    className="text-red-600 flex-shrink-0"
+                    size={20}
+                  />
                   <span className="text-gray-700">Multiple Categories</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="text-red-600 flex-shrink-0" size={20} />
+                  <CheckCircle
+                    className="text-red-600 flex-shrink-0"
+                    size={20}
+                  />
                   <span className="text-gray-700">Regular Updates</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="text-red-600 flex-shrink-0" size={20} />
+                  <CheckCircle
+                    className="text-red-600 flex-shrink-0"
+                    size={20}
+                  />
                   <span className="text-gray-700">Easy Navigation</span>
                 </div>
               </div>
@@ -184,8 +220,8 @@ export function Gallery() {
               <button
                 onClick={() => setViewMode("grid")}
                 className={`p-2 rounded-xl transition-all duration-300 ${
-                  viewMode === "grid" 
-                    ? "bg-white text-red-600 shadow-md" 
+                  viewMode === "grid"
+                    ? "bg-white text-red-600 shadow-md"
                     : "text-gray-600 hover:text-gray-900"
                 }`}
               >
@@ -194,8 +230,8 @@ export function Gallery() {
               <button
                 onClick={() => setViewMode("masonry")}
                 className={`p-2 rounded-xl transition-all duration-300 ${
-                  viewMode === "masonry" 
-                    ? "bg-white text-red-600 shadow-md" 
+                  viewMode === "masonry"
+                    ? "bg-white text-red-600 shadow-md"
                     : "text-gray-600 hover:text-gray-900"
                 }`}
               >
@@ -210,22 +246,29 @@ export function Gallery() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Photo Collection</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Our Photo Collection
+            </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-red-500 rounded-full mx-auto mb-6"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Browse through our carefully curated collection of memorable moments and achievements
+              Browse through our carefully curated collection of memorable
+              moments and achievements
             </p>
           </div>
 
           {viewMode === "grid" ? (
             // Grid Layout
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredImages.map((image, index) => (
-                <GalleryCard 
-                  key={index} 
-                  image={image} 
+              {filteredImages.map((image, index) => ( 
+                <GalleryCard
+                  key={index}
+                  image={image}
                   index={index}
-                  onClick={() => setSelectedImage(filteredImages.findIndex(img => img.src === image.src))}
+                  onClick={() =>
+                    setSelectedImage(
+                      filteredImages.findIndex((img) => img.src === image.src)
+                    )
+                  }
                 />
               ))}
             </div>
@@ -234,10 +277,14 @@ export function Gallery() {
             <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
               {filteredImages.map((image, index) => (
                 <div key={index} className="break-inside-avoid">
-                  <GalleryCard 
-                    image={image} 
+                  <GalleryCard
+                    image={image}
                     index={index}
-                    onClick={() => setSelectedImage(filteredImages.findIndex(img => img.src === image.src))}
+                    onClick={() =>
+                      setSelectedImage(
+                        filteredImages.findIndex((img) => img.src === image.src)
+                      )
+                    }
                   />
                 </div>
               ))}
@@ -248,8 +295,12 @@ export function Gallery() {
           {filteredImages.length === 0 && (
             <div className="text-center py-20">
               <div className="text-gray-400 text-6xl mb-4">📷</div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">No images found</h3>
-              <p className="text-gray-600">Try selecting a different category</p>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                No images found
+              </h3>
+              <p className="text-gray-600">
+                Try selecting a different category
+              </p>
             </div>
           )}
         </div>
@@ -260,15 +311,23 @@ export function Gallery() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <Card className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-red-200/60">
-              <div className="text-3xl font-bold text-red-600 mb-2">{galleryImages.length}+</div>
-              <div className="text-gray-700 font-semibold">Memorable Moments</div>
+              <div className="text-3xl font-bold text-red-600 mb-2">
+                {galleryImages.length}+
+              </div>
+              <div className="text-gray-700 font-semibold">
+                Memorable Moments
+              </div>
             </Card>
             <Card className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-red-200/60">
-              <div className="text-3xl font-bold text-red-600 mb-2">{categories.length - 1}</div>
+              <div className="text-3xl font-bold text-red-600 mb-2">
+                {categories.length - 1}
+              </div>
               <div className="text-gray-700 font-semibold">Categories</div>
             </Card>
             <Card className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-red-200/60">
-              <div className="text-3xl font-bold text-red-600 mb-2">{getCurrentYear()}</div>
+              <div className="text-3xl font-bold text-red-600 mb-2">
+                {getCurrentYear()}
+              </div>
               <div className="text-gray-700 font-semibold">Current Year</div>
             </Card>
           </div>
@@ -282,15 +341,17 @@ export function Gallery() {
             Experience Zee-Alpha Through Our Lens
           </h2>
           <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-            See why our students love coming to school every day. 
-            Explore the vibrant community that makes Zee-Alpha special.
+            See why our students love coming to school every day. Explore the
+            vibrant community that makes Zee-Alpha special.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-            <button className="bg-white hover:bg-gray-100 text-red-600 rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-2xl">
+            <a
+              href="mailto:info@zeealphaschools.com?subject=Schedule%20Campus%20Tour&body=I%20would%20like%20to%20schedule%20a%20campus%20tour.%20Please%20provide%20more%20information"
+              className="inline-block bg-white hover:bg-gray-100 text-red-600 rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
+            >
               Schedule Campus Tour
-            </button>
-          
+            </a>
           </div>
         </div>
       </section>
@@ -350,7 +411,13 @@ export function Gallery() {
 }
 
 // Separate Gallery Card Component for reusability
-function GalleryCard({ image }: { image: any; index: number; onClick: () => void }) {
+function GalleryCard({
+  image,
+}: {
+  image: any;
+  index: number;
+  onClick: () => void;
+}) {
   return (
     <Card className="group relative bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-8px] cursor-pointer">
       {/* Image Container */}
@@ -377,7 +444,6 @@ function GalleryCard({ image }: { image: any; index: number; onClick: () => void
             <div className="w-2 h-2 bg-white rounded-full"></div>
             {image.category}
           </div>
-         
         </div>
       </div>
 

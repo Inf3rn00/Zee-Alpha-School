@@ -1,0 +1,220 @@
+import React, { useState } from "react";
+import { useDashboard } from "./DashboardContext";
+import {
+  type GalleryImage,
+  type NewsEvent,
+  type ImageFormData,
+  type NewsFormData,
+} from "./types";
+import Sidebar from "./sidebar";
+import GalleryTab from "./gallerytab";
+import NewsTab from "./newsTab";
+import ImageModal from "./imageModal";
+import NewsModal from "./newsModal";
+import { Header } from "../../components/landing page/Header";
+
+const Dashboard: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<"gallery" | "news">("gallery");
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [showNewsModal, setShowNewsModal] = useState(false);
+  const [editingItem, setEditingItem] = useState<
+    GalleryImage | NewsEvent | null
+  >(null);
+
+  const {
+    galleryImages,
+    newsEvents,
+    addImage,
+    updateImage,
+    deleteImage,
+    addNewsEvent,
+    updateNewsEvent,
+    deleteNewsEvent,
+  } = useDashboard();
+
+  const [imageForm, setImageForm] = useState<ImageFormData>({
+    title: "",
+    category: "General",
+    imageFile: null,
+    imagePreview: null,
+  });
+
+  const [newsForm, setNewsForm] = useState<NewsFormData>({
+    title: "",
+    date: "",
+    time: "",
+    location: "",
+    description: "",
+    category: "General",
+  });
+
+  const handleImageFileChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image file");
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        alert("File size must be less than 5MB");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageForm((prev) => ({
+          ...prev,
+          imageFile: file,
+          imagePreview: reader.result as string,
+          title: prev.title || file.name.replace(/\.[^/.]+$/, ""),
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleImageSubmit = (): void => {
+    if (!imageForm.imagePreview || !imageForm.title.trim()) {
+      alert("Please provide both an image and a title");
+      return;
+    }
+
+    const imageData = {
+      src: imageForm.imagePreview,
+      title: imageForm.title.trim(),
+      category: imageForm.category,
+    };
+
+    if (editingItem) {
+      updateImage(editingItem.id, imageData);
+    } else {
+      addImage(imageData);
+    }
+
+    resetImageForm();
+  };
+
+  const handleNewsSubmit = (): void => {
+    if (!newsForm.title.trim()) {
+      alert("Please provide a title");
+      return;
+    }
+
+    const eventData = {
+      title: newsForm.title.trim(),
+      date: newsForm.date,
+      time: newsForm.time,
+      location: newsForm.location,
+      description: newsForm.description,
+      category: newsForm.category,
+    };
+
+    if (editingItem) {
+      updateNewsEvent(editingItem.id, eventData);
+    } else {
+      addNewsEvent(eventData);
+    }
+
+    resetNewsForm();
+  };
+
+  const resetImageForm = (): void => {
+    setImageForm({
+      title: "",
+      category: "General",
+      imageFile: null,
+      imagePreview: null,
+    });
+    setShowImageModal(false);
+    setEditingItem(null);
+  };
+
+  const resetNewsForm = (): void => {
+    setNewsForm({
+      title: "",
+      date: "",
+      time: "",
+      location: "",
+      description: "",
+      category: "General",
+    });
+    setShowNewsModal(false);
+    setEditingItem(null);
+  };
+
+  const openEditImage = (image: GalleryImage): void => {
+    setEditingItem(image);
+    setImageForm({
+      title: image.title,
+      category: image.category,
+      imageFile: null,
+      imagePreview: image.src,
+    });
+    setShowImageModal(true);
+  };
+
+  const openEditNews = (event: NewsEvent): void => {
+    setEditingItem(event);
+    setNewsForm({
+      title: event.title,
+      date: event.date,
+      time: event.time,
+      location: event.location,
+      description: event.description,
+      category: event.category,
+    });
+    setShowNewsModal(true);
+  };
+
+  return (
+    <div>
+      <div className="flex h-screen bg-gray-50 font-sans overflow-hidden">
+        <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+
+        <div className="flex-1 p-8 overflow-auto">
+          {activeTab === "gallery" && (
+            <GalleryTab
+              galleryImages={galleryImages}
+              deleteImage={deleteImage}
+              openEditImage={openEditImage}
+              setShowImageModal={setShowImageModal}
+            />
+          )}
+
+          {activeTab === "news" && (
+            <NewsTab
+              newsEvents={newsEvents}
+              deleteNewsEvent={deleteNewsEvent}
+              openEditNews={openEditNews}
+              setShowNewsModal={setShowNewsModal}
+            />
+          )}
+        </div>
+
+        <ImageModal
+          showImageModal={showImageModal}
+          editingItem={editingItem as GalleryImage}
+          imageForm={imageForm}
+          setImageForm={setImageForm}
+          handleImageFileChange={handleImageFileChange}
+          handleImageSubmit={handleImageSubmit}
+          resetImageForm={resetImageForm}
+        />
+
+        <NewsModal
+          showNewsModal={showNewsModal}
+          editingItem={editingItem as NewsEvent}
+          newsForm={newsForm}
+          setNewsForm={setNewsForm}
+          handleNewsSubmit={handleNewsSubmit}
+          resetNewsForm={resetNewsForm}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;

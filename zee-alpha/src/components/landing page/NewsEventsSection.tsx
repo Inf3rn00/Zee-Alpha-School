@@ -113,13 +113,7 @@ export function NewsEventsSection() {
 
                 {/* CTA Button */}
                 <div className="flex items-center justify-between">
-                  <button className="bg-white/20 hover:bg-red-600 text-white cursor-pointer rounded-2xl px-6 py-3 text-sm font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-white/10 hover:shadow-red-500/30 border border-white/30 hover:border-red-500 group/btn flex items-center gap-2">
-                    Learn More
-                    <ArrowRight
-                      size={16}
-                      className="group-hover/btn:translate-x-1 transition-transform duration-300"
-                    />
-                  </button>
+                  
                   <div className="text-xs text-white/60 group-hover:text-red-200 font-medium transition-colors duration-300">
                     Free Event
                   </div>
