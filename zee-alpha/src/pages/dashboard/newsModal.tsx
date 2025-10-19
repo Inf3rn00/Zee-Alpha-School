@@ -1,5 +1,5 @@
-import React from 'react';
-import { type NewsEvent, type NewsFormData } from './types';
+import React from "react";
+import { type NewsEvent, type NewsFormData } from "./types";
 
 interface NewsModalProps {
   showNewsModal: boolean;
@@ -16,7 +16,7 @@ const NewsModal: React.FC<NewsModalProps> = ({
   newsForm,
   setNewsForm,
   handleNewsSubmit,
-  resetNewsForm
+  resetNewsForm,
 }) => {
   if (!showNewsModal) return null;
 
@@ -26,17 +26,17 @@ const NewsModal: React.FC<NewsModalProps> = ({
   };
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
       onClick={resetNewsForm}
     >
-      <div 
+      <div
         className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         <form onSubmit={handleSubmit} className="p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            {editingItem ? 'Edit Event' : 'Add Event'}
+            {editingItem ? "Edit Event" : "Add Event"}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -47,7 +47,9 @@ const NewsModal: React.FC<NewsModalProps> = ({
               <input
                 type="text"
                 value={newsForm.title}
-                onChange={e => setNewsForm({ ...newsForm, title: e.target.value })}
+                onChange={(e) =>
+                  setNewsForm({ ...newsForm, title: e.target.value })
+                }
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Enter event title"
                 required
@@ -60,7 +62,9 @@ const NewsModal: React.FC<NewsModalProps> = ({
               </label>
               <select
                 value={newsForm.category}
-                onChange={e => setNewsForm({ ...newsForm, category: e.target.value })}
+                onChange={(e) =>
+                  setNewsForm({ ...newsForm, category: e.target.value })
+                }
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option>General</option>
@@ -79,7 +83,9 @@ const NewsModal: React.FC<NewsModalProps> = ({
               <input
                 type="date"
                 value={newsForm.date}
-                onChange={e => setNewsForm({ ...newsForm, date: e.target.value })}
+                onChange={(e) =>
+                  setNewsForm({ ...newsForm, date: e.target.value })
+                }
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
@@ -91,7 +97,9 @@ const NewsModal: React.FC<NewsModalProps> = ({
               <input
                 type="text"
                 value={newsForm.time}
-                onChange={e => setNewsForm({ ...newsForm, time: e.target.value })}
+                onChange={(e) =>
+                  setNewsForm({ ...newsForm, time: e.target.value })
+                }
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="9:00 AM - 3:00 PM"
               />
@@ -105,7 +113,9 @@ const NewsModal: React.FC<NewsModalProps> = ({
             <input
               type="text"
               value={newsForm.location}
-              onChange={e => setNewsForm({ ...newsForm, location: e.target.value })}
+              onChange={(e) =>
+                setNewsForm({ ...newsForm, location: e.target.value })
+              }
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Event location"
             />
@@ -117,7 +127,9 @@ const NewsModal: React.FC<NewsModalProps> = ({
             </label>
             <textarea
               value={newsForm.description}
-              onChange={e => setNewsForm({ ...newsForm, description: e.target.value })}
+              onChange={(e) =>
+                setNewsForm({ ...newsForm, description: e.target.value })
+              }
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
               placeholder="Event description"
               rows={4}
@@ -135,9 +147,9 @@ const NewsModal: React.FC<NewsModalProps> = ({
             <button
               type="submit"
               disabled={!newsForm.title.trim()}
-              className="px-4 py-2 bg-blue-900 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-blue-900 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-all duration-200 shadow-md"
             >
-              {editingItem ? 'Update' : 'Add'}
+              {editingItem ? "Update" : "Upload"}
             </button>
           </div>
         </form>

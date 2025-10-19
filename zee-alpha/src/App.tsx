@@ -7,6 +7,7 @@ import { Gallery } from "./pages/Gallery";
 import ScrollToTop from "./components/ui/ScrollToTop";
 import Dashboard from "./pages/dashboard/Dashboard";
 import { DashboardProvider } from "./pages/dashboard/DashboardContext";
+import SchoolApplicationForm from "./components/ui/SchoolApplicationForm";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/admissions" element={<Admissions />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admissionForm" element={<SchoolApplicationForm />} />
         </Routes>
       </BrowserRouter>
     </DashboardProvider>

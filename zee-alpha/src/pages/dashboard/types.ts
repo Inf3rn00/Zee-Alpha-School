@@ -4,6 +4,7 @@ export interface GalleryImage {
   title: string;
   category: string;
   createdAt: string;
+  
 }
 
 export interface NewsEvent {

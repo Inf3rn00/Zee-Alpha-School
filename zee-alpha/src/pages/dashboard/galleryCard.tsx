@@ -1,5 +1,6 @@
 import React from 'react';
-import {type  GalleryImage } from './types';
+import { type GalleryImage } from './types';
+import { Edit2, Trash2 } from 'lucide-react';
 
 interface GalleryCardProps {
   image: GalleryImage;
@@ -15,29 +16,35 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ image, onEdit, onDelete }) =>
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      <img 
-        src={image.src} 
-        alt={image.title}
-        className="w-full h-48 object-cover"
-      />
-      <div className="p-4">
-        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-1">{image.title}</h3>
-        <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full font-medium">
-          {image.category}
-        </span>
+    <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100">
+      <div className="relative group">
+        <img 
+          src={image.src} 
+          alt={image.title}
+          className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <span className="inline-block px-3 py-1 bg-white/90 text-blue-900 text-sm rounded-full font-medium backdrop-blur-sm">
+            {image.category}
+          </span>
+        </div>
       </div>
-      <div className="px-4 py-3 border-t border-gray-100 flex gap-2">
+      <div className="p-4">
+        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">{image.title}</h3>
+      </div>
+      <div className="px-4 py-3 border-t border-gray-100 flex gap-2 bg-gray-50">
         <button
           onClick={() => onEdit(image)}
-          className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-3 rounded text-sm font-medium transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 bg-white text-blue-900 hover:bg-blue-50 py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 border border-gray-200 hover:border-blue-300"
         >
+          <Edit2 size={16} />
           Edit
         </button>
         <button
           onClick={handleDelete}
-          className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 px-3 rounded text-sm font-medium transition-colors"
+          className="flex-1 flex items-center justify-center gap-2 bg-white text-red-600 hover:bg-red-50 py-2 px-3 rounded-lg text-sm font-medium transition-all duration-200 border border-gray-200 hover:border-red-300"
         >
+          <Trash2 size={16} />
           Delete
         </button>
       </div>

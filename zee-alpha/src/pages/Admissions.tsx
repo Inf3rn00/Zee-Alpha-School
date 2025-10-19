@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Header } from "../components/landing page/Header";
 import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
@@ -230,7 +231,7 @@ export default function Admissions() {
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
             <Button className="bg-white hover:bg-gray-100 text-red-600 rounded-2xl px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-2xl">
-              Start Online Application
+             <Link to="/AdmissionForm">Start Online Application</Link> 
               <ArrowRight size={20} className="ml-3" />
             </Button>
           

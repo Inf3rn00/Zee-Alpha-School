@@ -1,5 +1,5 @@
-import React from 'react';
-import { type GalleryImage, type ImageFormData } from './types';
+import React from "react";
+import { type GalleryImage, type ImageFormData } from "./types";
 
 interface ImageModalProps {
   showImageModal: boolean;
@@ -18,7 +18,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
   setImageForm,
   handleImageFileChange,
   handleImageSubmit,
-  resetImageForm
+  resetImageForm,
 }) => {
   if (!showImageModal) return null;
 
@@ -28,17 +28,17 @@ const ImageModal: React.FC<ImageModalProps> = ({
   };
 
   return (
-    <div 
-      className="fixed inset-0 bg-gray bg-opacity-50 flex items-center justify-center p-4 z-50"
+    <div
+      className="fixed inset-0 bg-gray-100 flex items-center justify-center p-4 "
       onClick={resetImageForm}
     >
-      <div 
+      <div
         className="bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto"
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
         <form onSubmit={handleSubmit} className="p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            {editingItem ? 'Edit Image' : 'Upload Image'}
+            {editingItem ? "Edit Image" : "Upload Image"}
           </h2>
 
           {!editingItem && (
@@ -58,9 +58,9 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
           {imageForm.imagePreview && (
             <div className="mb-4">
-              <img 
-                src={imageForm.imagePreview} 
-                alt="Preview" 
+              <img
+                src={imageForm.imagePreview}
+                alt="Preview"
                 className="w-full h-48 object-contain rounded-lg border border-gray-200"
               />
             </div>
@@ -73,7 +73,9 @@ const ImageModal: React.FC<ImageModalProps> = ({
             <input
               type="text"
               value={imageForm.title}
-              onChange={e => setImageForm({ ...imageForm, title: e.target.value })}
+              onChange={(e) =>
+                setImageForm({ ...imageForm, title: e.target.value })
+              }
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Enter image title"
               required
@@ -86,7 +88,9 @@ const ImageModal: React.FC<ImageModalProps> = ({
             </label>
             <select
               value={imageForm.category}
-              onChange={e => setImageForm({ ...imageForm, category: e.target.value })}
+              onChange={(e) =>
+                setImageForm({ ...imageForm, category: e.target.value })
+              }
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option>General</option>
@@ -107,10 +111,10 @@ const ImageModal: React.FC<ImageModalProps> = ({
             </button>
             <button
               type="submit"
-              disabled={!imageForm.imagePreview || !imageForm.title.trim()}
-              className="px-4 py-2 bg-blue-900 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors"
+              disabled={!imageForm.title.trim()}
+              className="flex items-center gap-2 px-4 py-2 bg-blue-900 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-all duration-200 shadow-md"
             >
-              {editingItem ? 'Update' : 'Upload'}
+              {editingItem ? "Update" : "Upload"}
             </button>
           </div>
         </form>

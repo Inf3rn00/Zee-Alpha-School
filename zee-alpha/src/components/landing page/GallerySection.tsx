@@ -3,6 +3,7 @@ import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
+
 const galleryImages = [
   {
     src: "/images/3 little engineers.jpeg",
@@ -37,6 +38,7 @@ const galleryImages = [
 ];
 
 export function GallerySection() {
+  
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const nextImage = () => {
@@ -54,6 +56,7 @@ export function GallerySection() {
   };
 
   return (
+
     <section
       
       className="relative py-24 bg-gradient-to-br from-gray-50 to-white overflow-hidden"
@@ -104,7 +107,7 @@ export function GallerySection() {
               <div className="aspect-square overflow-hidden">
                 <ImageWithFallback
                   src={image.src}
-                  alt={image.alt}
+                  // alt={image.alt}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
               </div>
@@ -176,7 +179,7 @@ export function GallerySection() {
             <div className="w-full h-full flex items-center justify-center">
               <ImageWithFallback
                 src={galleryImages[selectedImage].src}
-                alt={galleryImages[selectedImage].alt}
+                // alt={galleryImages[selectedImage].alt}
                 className="max-w-full max-h-[80vh] object-contain rounded-2xl"
               />
             </div>
@@ -187,7 +190,7 @@ export function GallerySection() {
                 {galleryImages[selectedImage].category}
               </div>
               <div className="text-lg font-semibold">
-                {galleryImages[selectedImage].alt}
+                {/* {galleryImages[selectedImage].alt} */}
               </div>
               <div className="text-sm text-white/70 mt-1">
                 {selectedImage + 1} of {galleryImages.length}

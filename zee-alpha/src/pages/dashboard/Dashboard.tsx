@@ -11,7 +11,6 @@ import GalleryTab from "./gallerytab";
 import NewsTab from "./newsTab";
 import ImageModal from "./imageModal";
 import NewsModal from "./newsModal";
-import { Header } from "../../components/landing page/Header";
 
 const Dashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"gallery" | "news">("gallery");
@@ -170,7 +169,7 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <div className="flex h-screen bg-gray-50 font-sans overflow-hidden">
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 

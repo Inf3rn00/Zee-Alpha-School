@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Home, Images, Newspaper, ArrowLeft } from "lucide-react";
 
 interface SidebarProps {
   activeTab: "gallery" | "news";
@@ -8,30 +9,54 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="w-64 bg-blue-900 text-white p-6">
-     <Link to="/"> <h2 className="text-2xl font-bold mb-8">Dashboard</h2></Link>
-      <nav className="space-y-2">
+    <div className="w-80 bg-gradient-to-b from-blue-900 to-blue-800 text-white p-6 flex flex-col">
+      {/* Logo Section */}
+      <div className="flex items-center gap-4 mb-8 pb-6 border-b border-blue-600">
+        <div className="w-12 h-12  rounded-lg flex items-center justify-center">
+          <div className="text-blue-900 text-xs font-bold text-center leading-tight">
+            <img src="/images/school logo.jpeg" alt="school-logo" className="rounded-full" />
+          </div>
+        </div>
+        <div>
+          <h1 className="text-xl font-bold text-white">Zee Alpha</h1>
+          <p className="text-blue-200 text-sm">School Dashboard</p>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <nav className="space-y-2 flex-1">
         <button
-          className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+          className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
             activeTab === "gallery"
-              ? "bg-blue-700 text-white font-semibold"
-              : "bg-blue-800/50 hover:bg-blue-700/50"
+              ? "bg-white text-blue-900 font-semibold shadow-lg"
+              : "text-blue-100 hover:bg-blue-700 hover:text-white"
           }`}
           onClick={() => setActiveTab("gallery")}
         >
-          📷 Gallery
+          <Images size={20} />
+          <span>Gallery Management</span>
         </button>
         <button
-          className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
+          className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
             activeTab === "news"
-              ? "bg-blue-700 text-white font-semibold"
-              : "bg-blue-800/50 hover:bg-blue-700/50"
+              ? "bg-white text-blue-900 font-semibold shadow-lg"
+              : "text-blue-100 hover:bg-blue-700 hover:text-white"
           }`}
           onClick={() => setActiveTab("news")}
         >
-          📰 News & Events
+          <Newspaper size={20} />
+          <span>News & Events</span>
         </button>
       </nav>
+
+      {/* Back to Home Button */}
+      <Link 
+        to="/"
+        className="flex items-center gap-3 px-4 py-3 text-blue-100 hover:bg-blue-700 rounded-xl transition-all duration-200 mt-auto border-t border-blue-600 pt-6"
+      >
+        <ArrowLeft size={20} />
+        <span>Back to Home</span>
+      </Link>
     </div>
   );
 };

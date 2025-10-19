@@ -2,6 +2,7 @@ import React from 'react';
 import { type GalleryImage } from './types';
 import GalleryCard from './galleryCard';
 import EmptyState from './emptyState';
+import { Plus } from 'lucide-react';
 
 interface GalleryTabProps {
   galleryImages: GalleryImage[];
@@ -24,10 +25,11 @@ const GalleryTab: React.FC<GalleryTabProps> = ({
           <p className="text-gray-600 mt-1">{galleryImages.length} images</p>
         </div>
         <button
-          className="bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
           onClick={() => setShowImageModal(true)}
         >
-          + Upload Image
+          <Plus size={20} />
+          Upload Image
         </button>
       </div>
 

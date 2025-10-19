@@ -11,8 +11,9 @@ import {
 } from "lucide-react";
 import { Header } from "../components/landing page/Header";
 import { Card } from "../components/ui/card";
+import { useDashboard } from "./dashboard/DashboardContext";
 
-const galleryImages = [
+const fallbackImages = [
   {
     src: "/images/3 little engineers.jpeg",
     alt: "Little engineers",
@@ -79,18 +80,22 @@ export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("All");
   const [viewMode, setViewMode] = useState<"grid" | "masonry">("masonry");
+  const { galleryImages } = useDashboard();
 
-  // Get unique categories
+  // ✅ FIXED: Use fallback images when galleryImages is empty
+  const displayImages = galleryImages && galleryImages.length > 0 ? galleryImages : fallbackImages;
+
+  // Get unique categories from displayImages
   const categories = [
     "All",
-    ...new Set(galleryImages.map((img) => img.category)),
+    ...new Set(displayImages.map((img) => img.category)),
   ];
 
   // Filter images based on selected category
   const filteredImages =
     activeCategory === "All"
-      ? galleryImages
-      : galleryImages.filter((img) => img.category === activeCategory);
+      ? displayImages
+      : displayImages.filter((img) => img.category === activeCategory);
 
   const nextImage = () => {
     if (selectedImage !== null) {
@@ -254,6 +259,8 @@ export function Gallery() {
               Browse through our carefully curated collection of memorable
               moments and achievements
             </p>
+            
+            
           </div>
 
           {viewMode === "grid" ? (
@@ -261,7 +268,7 @@ export function Gallery() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredImages.map((image, index) => ( 
                 <GalleryCard
-                  key={index}
+                  key={image.src || index}
                   image={image}
                   index={index}
                   onClick={() =>
@@ -276,7 +283,7 @@ export function Gallery() {
             // Masonry Layout
             <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
               {filteredImages.map((image, index) => (
-                <div key={index} className="break-inside-avoid">
+                <div key={image.src || index} className="break-inside-avoid">
                   <GalleryCard
                     image={image}
                     index={index}
@@ -312,7 +319,7 @@ export function Gallery() {
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <Card className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg border border-red-200/60">
               <div className="text-3xl font-bold text-red-600 mb-2">
-                {galleryImages.length}+
+                {displayImages.length}+
               </div>
               <div className="text-gray-700 font-semibold">
                 Memorable Moments
@@ -413,13 +420,18 @@ export function Gallery() {
 // Separate Gallery Card Component for reusability
 function GalleryCard({
   image,
+  index,
+  onClick,
 }: {
   image: any;
   index: number;
   onClick: () => void;
 }) {
   return (
-    <Card className="group relative bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-8px] cursor-pointer">
+    <Card 
+      className="group relative bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-8px] cursor-pointer"
+      onClick={onClick}
+    >
       {/* Image Container */}
       <div className="aspect-[4/3] overflow-hidden">
         <ImageWithFallback

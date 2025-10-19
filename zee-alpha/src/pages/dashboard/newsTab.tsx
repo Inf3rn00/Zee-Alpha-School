@@ -2,6 +2,7 @@ import React from 'react';
 import { type NewsEvent } from './types';
 import NewsCard from './newsCard';
 import EmptyState from './emptyState';
+import { Plus } from 'lucide-react';
 
 interface NewsTabProps {
   newsEvents: NewsEvent[];
@@ -24,10 +25,11 @@ const NewsTab: React.FC<NewsTabProps> = ({
           <p className="text-gray-600 mt-1">{newsEvents.length} events</p>
         </div>
         <button
-          className="bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+          className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white px-6 py-3 rounded-xl font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
           onClick={() => setShowNewsModal(true)}
         >
-          + Add Event
+          <Plus size={20} />
+          Add Event
         </button>
       </div>
 

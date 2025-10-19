@@ -69,6 +69,68 @@ export const DashboardProvider: React.FC<DashboardProviderProps> = ({ children }
     updateNewsEvent,
     deleteNewsEvent
   };
+  const fallbackImages = [
+  { 
+    src: "/images/3 little engineers.jpeg",
+    title: "Little engineers",
+    category: "STEM",
+  },
+  {
+    src: "/images/3 students posing.jpeg",
+    title: "Students posing",
+    category: "Student Life",
+  },
+  {
+    src: "/images/award wining girl 1.jpeg",
+    title: "Award winning student",
+    category: "Achievements",
+  },
+  {
+    src: "/images/award winning student 1.jpeg",
+    title: "Award winning student",
+    category: "Achievements",
+  },
+  {
+    src: "/images/basic-tech-1.jpeg",
+    title: "Science lab activities",
+    category: "STEM",
+  },
+  {
+    src: "/images/engineer drawing.jpeg",
+    title: "Little engineer drawing",
+    category: "STEM",
+  },
+  {
+    src: "/images/primary students with red group picture.jpeg",
+    title: "Primary students group photo",
+    category: "Student Life",
+  },
+  {
+    src: "/images/student-speech.jpeg",
+    title: "Student giving speech",
+    category: "Student Life",
+  },
+  {
+    src: "/images/students-radio.jpeg",
+    title: "Students at radio station",
+    category: "Activities",
+  },
+  {
+    src: "/images/red-house-vs-yellow-house-volleyball.jpeg",
+    title: "Volleyball match",
+    category: "Sports",
+  },
+  {
+    src: "/images/student-mentor.jpeg",
+    title: "Student mentorship",
+    category: "Student Life",
+  },
+  {
+    src: "/images/nigerian_students_cream_bowties_distinct_faces.jpg",
+    title: "Students in uniform",
+    category: "Student Life",
+  },
+];
 
   return (
     <DashboardContext.Provider value={value}>
