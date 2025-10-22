@@ -1,22 +1,101 @@
-import React from 'react';
-import { type GalleryImage } from './types';
+import React, { useState } from 'react';
+import { type GalleryImage, type ImageFormData } from './types';
 import GalleryCard from './galleryCard';
 import EmptyState from './emptyState';
+import ImageModal from './imageModal';
 import { Plus } from 'lucide-react';
+import { useDashboard } from './DashboardContext';
 
-interface GalleryTabProps {
-  galleryImages: GalleryImage[];
-  deleteImage: (id: number) => void;
-  openEditImage: (image: GalleryImage) => void;
-  setShowImageModal: (show: boolean) => void;
-}
 
-const GalleryTab: React.FC<GalleryTabProps> = ({
-  galleryImages,
-  deleteImage,
-  openEditImage,
-  setShowImageModal
-}) => {
+
+const GalleryTab = () => {
+  const { galleryImages, addGalleryImage, updateGalleryImage, deleteGalleryImage } = useDashboard();
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [editingItem, setEditingItem] = useState<GalleryImage | null>(null);
+
+  const [imageForm, setImageForm] = useState<ImageFormData>({
+    title: '',
+    category: 'General',
+    imageFile: null,
+    imagePreview: '',
+  });
+
+  const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setImageForm(prev => ({
+        ...prev,
+        imageFile: file,
+        imagePreview: previewUrl,
+      }));
+    }
+  };
+
+  const handleImageSubmit = () => {
+    if (!imageForm.title.trim()) return;
+
+    if (editingItem) {
+      // Update existing image
+      const updatedFields: Partial<GalleryImage> = {
+        title: imageForm.title,
+        category: imageForm.category,
+      };
+
+      // Only update src if a new image file was selected
+      if (imageForm.imageFile && imageForm.imagePreview) {
+        updatedFields.src = imageForm.imagePreview;
+        updatedFields.alt = imageForm.title; // Update alt text too
+      }
+
+      updateGalleryImage(editingItem.id, updatedFields);
+    } else {
+      // Add new image
+      if (!imageForm.imageFile || !imageForm.imagePreview) return;
+
+      const newImage: Omit<GalleryImage, 'id'> = {
+        src: imageForm.imagePreview, // This is guaranteed to be string from the condition above
+        alt: imageForm.title,
+        title: imageForm.title,
+        category: imageForm.category,
+        featured: false,
+      };
+
+      addGalleryImage(newImage);
+    }
+
+    resetImageForm();
+    setShowImageModal(false);
+  };
+
+  const resetImageForm = () => {
+    setImageForm({
+      title: '',
+      category: 'General',
+      imageFile: null,
+      imagePreview: '',
+    });
+    setEditingItem(null);
+    setShowImageModal(false);
+  };
+
+  const openEditImage = (image: GalleryImage) => {
+    setEditingItem(image);
+    setImageForm({
+      title: image.title,
+      category: image.category,
+      imageFile: null,
+      imagePreview: image.src,
+    });
+    setShowImageModal(true);
+  };
+
+  const handleDeleteImage = (id: number) => {
+    if (window.confirm('Are you sure you want to delete this image?')) {
+      deleteGalleryImage(id);
+    }
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
@@ -45,11 +124,21 @@ const GalleryTab: React.FC<GalleryTabProps> = ({
               key={image.id}
               image={image}
               onEdit={openEditImage}
-              onDelete={deleteImage}
+              onDelete={handleDeleteImage}
             />
           ))}
         </div>
       )}
+
+      <ImageModal
+        showImageModal={showImageModal}
+        editingItem={editingItem}
+        imageForm={imageForm}
+        setImageForm={setImageForm}
+        handleImageFileChange={handleImageFileChange}
+        handleImageSubmit={handleImageSubmit}
+        resetImageForm={resetImageForm}
+      />
     </div>
   );
 };

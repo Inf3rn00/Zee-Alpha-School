@@ -1,10 +1,17 @@
 export interface GalleryImage {
   id: number;
   src: string;
+  alt: string;
   title: string;
   category: string;
-  createdAt: string;
-  
+  featured?: boolean;
+}
+
+export interface ImageFormData {
+  title: string;
+  category: string;
+  imageFile: File | null;
+  imagePreview: string;
 }
 
 export interface NewsEvent {
@@ -15,15 +22,8 @@ export interface NewsEvent {
   location: string;
   description: string;
   category: string;
-  createdAt: string;
 }
 
-export interface ImageFormData {
-  title: string;
-  category: string;
-  imageFile: File | null;
-  imagePreview: string | null;
-}
 
 export interface NewsFormData {
   title: string;

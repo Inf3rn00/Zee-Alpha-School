@@ -3,13 +3,12 @@ import { Calendar, Clock, MapPin } from "lucide-react";
 import { useDashboard } from "../../pages/dashboard/DashboardContext";
 
 export const NewsEventsSection: React.FC = () => {
-  // ✅ CORRECT - Move the hook call INSIDE the component
   const { newsEvents } = useDashboard();
 
   // Optional: Fallback data if newsEvents is empty
   const displayEvents = newsEvents.length > 0 ? newsEvents : [
     {
-      id: '1',
+      id: 1,
       title: "Annual Cultural Day Festival",
       date: "March 15, 2025",
       time: "9:00 AM - 3:00 PM",
@@ -18,7 +17,7 @@ export const NewsEventsSection: React.FC = () => {
       category: "Cultural",
     },
     {
-      id: '2',
+      id: 2,
       title: "Science & Innovation Fair",
       date: "April 22, 2025",
       time: "10:00 AM - 2:00 PM",
@@ -27,7 +26,7 @@ export const NewsEventsSection: React.FC = () => {
       category: "Academic",
     },
     {
-      id: '3',
+      id: 3,
       title: "Sports Championship Finals",
       date: "May 8, 2025",
       time: "8:00 AM - 5:00 PM",
@@ -37,6 +36,7 @@ export const NewsEventsSection: React.FC = () => {
     },
   ];
 
+  // ... rest of your component remains the same
   return (
     <section
       id="news"

@@ -81,8 +81,8 @@ export function Gallery() {
   const [viewMode, setViewMode] = useState<"grid" | "masonry">("masonry");
   const { galleryImages } = useDashboard();
 
-  // ✅ FIXED: Use fallback images when galleryImages is empty
-  const displayImages = galleryImages && galleryImages.length > 0 ? galleryImages : fallbackImages;
+  // Use only dashboard images, no fallbacks for uploaded content
+  const displayImages = galleryImages;
 
   // Get unique categories from displayImages
   const categories = [
@@ -90,7 +90,7 @@ export function Gallery() {
     ...new Set(displayImages.map((img) => img.category)),
   ];
 
-  // Filter images based on selected category
+// Filter images based on selected category
   const filteredImages =
     activeCategory === "All"
       ? displayImages
@@ -299,7 +299,7 @@ export function Gallery() {
           {/* Empty State */}
           {filteredImages.length === 0 && (
             <div className="text-center py-20">
-              <div className="text-gray-400 text-6xl mb-4">📷</div>
+              <div className="text-gray-400 text-6xl mb-4"></div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">
                 No images found
               </h3>
