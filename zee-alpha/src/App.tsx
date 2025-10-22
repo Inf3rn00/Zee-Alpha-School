@@ -8,19 +8,32 @@ import ScrollToTop from "./components/ui/ScrollToTop";
 import Dashboard from "./pages/dashboard/Dashboard";
 import { DashboardProvider } from "./pages/dashboard/DashboardContext";
 import SchoolApplicationForm from "./components/ui/SchoolApplicationForm";
+import AuthComponent from "./pages/authComponent";
+import ProtectedRoute from "./components/ui/ProtectedRoute";
+import { Layout } from "./layouts/layout";
 
 export default function App() {
   return (
     <DashboardProvider>
       <BrowserRouter>
-        <ScrollToTop></ScrollToTop>
+        <ScrollToTop />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/admissions" element={<Admissions />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/admissionForm" element={<SchoolApplicationForm />} />
+          <Route path="/" element={<Layout><LandingPage /></Layout>} />
+          <Route path="/about" element={<Layout><AboutUs /></Layout>} />
+          <Route path="/admissions" element={<Layout><Admissions /></Layout>} />
+          <Route path="/gallery" element={<Layout><Gallery /></Layout>} />
+          <Route path="/admissionForm" element={<Layout><SchoolApplicationForm /></Layout>} />
+          
+          <Route path="/login" element={<AuthComponent />} />
+          
+          <Route 
+            path="/dashboard" 
+            element={
+              <ProtectedRoute>
+                  <Dashboard />
+              </ProtectedRoute>
+            } 
+          />
         </Routes>
       </BrowserRouter>
     </DashboardProvider>

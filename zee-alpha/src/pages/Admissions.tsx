@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Header } from "../components/landing page/Header";
 import { Button } from "../components/ui/button";
 import { Card } from "../components/ui/card";
 import { ArrowRight, Download, Upload, Award, Clock, Users,  GraduationCap, CheckCircle } from "lucide-react";
@@ -88,7 +87,6 @@ const admissionSteps = [
 export default function Admissions() {
   return (
     <div className="min-h-screen bg-white">
-    <Header></Header>
         
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-red-600 to-red-700 text-white overflow-hidden">

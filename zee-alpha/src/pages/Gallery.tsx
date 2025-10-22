@@ -9,7 +9,6 @@ import {
   LayoutGrid,
   CheckCircle,
 } from "lucide-react";
-import { Header } from "../components/landing page/Header";
 import { Card } from "../components/ui/card";
 import { useDashboard } from "./dashboard/DashboardContext";
 
@@ -117,7 +116,6 @@ export function Gallery() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
 
       {/* Hero Section - Using Admissions styling */}
       <section className="relative py-20 bg-gradient-to-br from-red-600 to-red-700 text-white overflow-hidden">
@@ -420,7 +418,6 @@ export function Gallery() {
 // Separate Gallery Card Component for reusability
 function GalleryCard({
   image,
-  index,
   onClick,
 }: {
   image: any;
