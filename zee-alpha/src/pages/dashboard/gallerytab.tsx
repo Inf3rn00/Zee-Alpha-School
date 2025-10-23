@@ -9,7 +9,7 @@ import { useDashboard } from './DashboardContext';
 
 
 const GalleryTab = () => {
-  const { galleryImages, addGalleryImage, updateGalleryImage, deleteGalleryImage } = useDashboard();
+  const { galleryImages, addImage, updateImage, deleteImage } = useDashboard();
   const [showImageModal, setShowImageModal] = useState(false);
   const [editingItem, setEditingItem] = useState<GalleryImage | null>(null);
 
@@ -45,23 +45,24 @@ const GalleryTab = () => {
       // Only update src if a new image file was selected
       if (imageForm.imageFile && imageForm.imagePreview) {
         updatedFields.src = imageForm.imagePreview;
-        updatedFields.alt = imageForm.title; // Update alt text too
+        updatedFields.alt = imageForm.title;
       }
 
-      updateGalleryImage(editingItem.id, updatedFields);
+      updateImage(editingItem.id, updatedFields);
     } else {
       // Add new image
       if (!imageForm.imageFile || !imageForm.imagePreview) return;
 
       const newImage: Omit<GalleryImage, 'id'> = {
-        src: imageForm.imagePreview, // This is guaranteed to be string from the condition above
+        src: imageForm.imagePreview, 
         alt: imageForm.title,
         title: imageForm.title,
         category: imageForm.category,
         featured: false,
+        createdAt: new Date().toISOString(),
       };
 
-      addGalleryImage(newImage);
+      addImage(newImage);
     }
 
     resetImageForm();
@@ -92,14 +93,14 @@ const GalleryTab = () => {
 
   const handleDeleteImage = (id: number) => {
     if (window.confirm('Are you sure you want to delete this image?')) {
-      deleteGalleryImage(id);
+      deleteImage(id);
     }
   };
 
   return (
     <div>
       <div className="flex justify-between items-center mb-8">
-        <div>
+        <div className=''>
           <h1 className="text-3xl font-bold text-gray-900">Gallery Management</h1>
           <p className="text-gray-600 mt-1">{galleryImages.length} images</p>
         </div>

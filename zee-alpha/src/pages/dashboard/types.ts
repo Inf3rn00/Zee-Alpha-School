@@ -12,7 +12,7 @@ export interface ImageFormData {
   title: string;
   category: string;
   imageFile: File | null;
-  imagePreview: string;
+  imagePreview: string | null;
 }
 
 export interface NewsEvent {

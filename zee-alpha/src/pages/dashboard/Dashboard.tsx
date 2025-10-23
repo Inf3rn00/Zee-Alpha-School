@@ -12,6 +12,9 @@ import NewsTab from "./newsTab";
 import ImageModal from "./imageModal";
 import NewsModal from "./newsModal";
 
+const GalleryTabComponent = GalleryTab as React.ComponentType<any>;
+const NewsTabComponent = NewsTab as React.ComponentType<any>;
+
 const Dashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState<"gallery" | "news">("gallery");
   const [showImageModal, setShowImageModal] = useState(false);
@@ -81,16 +84,22 @@ const Dashboard: React.FC = () => {
       return;
     }
 
-    const imageData = {
+    const baseImageData = {
       src: imageForm.imagePreview,
       title: imageForm.title.trim(),
       category: imageForm.category,
+      alt: imageForm.title.trim(),
     };
 
     if (editingItem) {
+      const imageData = {
+        ...baseImageData,
+        id: editingItem.id,
+        createdAt: (editingItem as GalleryImage).createdAt,
+      };
       updateImage(editingItem.id, imageData);
     } else {
-      addImage(imageData);
+      addImage(baseImageData);
     }
 
     resetImageForm();
@@ -170,48 +179,54 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="flex h-screen bg-gray-50 font-sans overflow-hidden">
-        <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-
-        <div className="flex-1 p-8 overflow-auto">
-          {activeTab === "gallery" && (
-            <GalleryTab
-              galleryImages={galleryImages}
-              deleteImage={deleteImage}
-              openEditImage={openEditImage}
-              setShowImageModal={setShowImageModal}
-            />
-          )}
-
-          {activeTab === "news" && (
-            <NewsTab
-              newsEvents={newsEvents}
-              deleteNewsEvent={deleteNewsEvent}
-              openEditNews={openEditNews}
-              setShowNewsModal={setShowNewsModal}
-            />
-          )}
+      <div className="flex h-screen bg-gray-50 font-sans">
+        {/* Sidebar - Fixed width */}
+        <div className="w-80 flex-shrink-0">
+          <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
         </div>
 
-        <ImageModal
-          showImageModal={showImageModal}
-          editingItem={editingItem as GalleryImage}
-          imageForm={imageForm}
-          setImageForm={setImageForm}
-          handleImageFileChange={handleImageFileChange}
-          handleImageSubmit={handleImageSubmit}
-          resetImageForm={resetImageForm}
-        />
+        {/* Main Content - Flexible width with proper scrolling */}
+        <div className="flex-1 flex flex-col min-w-0">
+          <div className="flex-1 overflow-auto p-8">
+            {activeTab === "gallery" && (
+              <GalleryTabComponent
+                galleryImages={galleryImages}
+                deleteImage={deleteImage}
+                openEditImage={openEditImage}
+                setShowImageModal={setShowImageModal}
+              />
+            )}
 
-        <NewsModal
-          showNewsModal={showNewsModal}
-          editingItem={editingItem as NewsEvent}
-          newsForm={newsForm}
-          setNewsForm={setNewsForm}
-          handleNewsSubmit={handleNewsSubmit}
-          resetNewsForm={resetNewsForm}
-        />
+            {activeTab === "news" && (
+              <NewsTabComponent
+                newsEvents={newsEvents}
+                deleteNewsEvent={deleteNewsEvent}
+                openEditNews={openEditNews}
+                setShowNewsModal={setShowNewsModal}
+              />
+            )}
+          </div>
+        </div>
       </div>
+
+      <ImageModal
+        showImageModal={showImageModal}
+        editingItem={editingItem as GalleryImage}
+        imageForm={imageForm}
+        setImageForm={setImageForm}
+        handleImageFileChange={handleImageFileChange}
+        handleImageSubmit={handleImageSubmit}
+        resetImageForm={resetImageForm}
+      />
+
+      <NewsModal
+        showNewsModal={showNewsModal}
+        editingItem={editingItem as NewsEvent}
+        newsForm={newsForm}
+        setNewsForm={setNewsForm}
+        handleNewsSubmit={handleNewsSubmit}
+        resetNewsForm={resetNewsForm}
+      />
     </div>
   );
 };

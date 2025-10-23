@@ -46,6 +46,7 @@ const NewsTab: React.FC<NewsTabProps> = () => {
         time: newsForm.time,
         location: newsForm.location,
         description: newsForm.description,
+        createdAt: new Date().toISOString(),
       };
 
       addNewsEvent(newEvent);

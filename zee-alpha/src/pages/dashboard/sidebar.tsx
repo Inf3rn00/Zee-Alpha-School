@@ -9,7 +9,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
   return (
-    <div className="w-80 bg-gradient-to-b from-blue-900 to-blue-800 text-white p-6 flex flex-col">
+    <div className="w-80 bg-gradient-to-b from-blue-900 to-blue-800 text-white p-6 flex flex-col h-full">
       {/* Logo Section */}
       <div className="flex items-center gap-4 mb-8 pb-6 border-b border-blue-600">
         <div className="w-12 h-12  rounded-lg flex items-center justify-center">
