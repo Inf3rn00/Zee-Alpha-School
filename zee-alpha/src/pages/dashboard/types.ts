@@ -5,6 +5,7 @@ export interface GalleryImage {
   title: string;
   category: string;
   featured?: boolean;
+  createdAt: string;
 }
 
 export interface ImageFormData {
@@ -22,6 +23,7 @@ export interface NewsEvent {
   location: string;
   description: string;
   category: string;
+  createdAt: string;
 }
 
 

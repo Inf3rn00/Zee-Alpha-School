@@ -1,4 +1,3 @@
-import { Header } from "../components/landing page/Header";
 import { HeroSection } from "../components/landing page/HeroSection";
 import { OverviewSection } from "../components/landing page/OverviewSection";
 import { AboutSection } from "../components/landing page/AboutSection";

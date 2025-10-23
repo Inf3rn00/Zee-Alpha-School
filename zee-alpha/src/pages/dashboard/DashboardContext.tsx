@@ -1,112 +1,78 @@
-// DashboardContext.tsx
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { type GalleryImage, type NewsEvent } from './types';
+import React, { useState, createContext, useContext, type ReactNode } from 'react';
+import { type DashboardContextType, type GalleryImage,type  NewsEvent } from './types';
 
-interface DashboardContextType {
-  galleryImages: GalleryImage[];
-  addGalleryImage: (image: Omit<GalleryImage, 'id'>) => void;
-  updateGalleryImage: (id: number, image: Partial<GalleryImage>) => void;
-  deleteGalleryImage: (id: number) => void;
-  setGalleryImages: (images: GalleryImage[]) => void;
-  
-  // News Events
-  newsEvents: NewsEvent[];
-  addNewsEvent: (event: Omit<NewsEvent, 'id'>) => void;
-  updateNewsEvent: (id: number, event: Partial<NewsEvent>) => void;
-  deleteNewsEvent: (id: number) => void;
-  setNewsEvents: (events: NewsEvent[]) => void;
+const DashboardContext = createContext<DashboardContextType | null>(null);
+
+interface DashboardProviderProps {
+  children: ReactNode;
 }
 
-const DashboardContext = createContext<DashboardContextType | undefined>(undefined);
+export const useDashboard = (): DashboardContextType => {
+  const context = useContext(DashboardContext);
+  if (!context) {
+    throw new Error('useDashboard must be used within DashboardProvider');
+  }
+  return context;
+};
 
-export const DashboardProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const DashboardProvider: React.FC<DashboardProviderProps> = ({ children }) => {
   const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
   const [newsEvents, setNewsEvents] = useState<NewsEvent[]>([]);
 
-  // Load data from localStorage on mount
-  useEffect(() => {
-    const savedImages = localStorage.getItem('galleryImages');
-    const savedEvents = localStorage.getItem('newsEvents');
-    
-    if (savedImages) {
-      setGalleryImages(JSON.parse(savedImages));
-    }
-    if (savedEvents) {
-      setNewsEvents(JSON.parse(savedEvents));
-    }
-  }, []);
-
-  // Save to localStorage whenever data changes
-  useEffect(() => {
-    localStorage.setItem('galleryImages', JSON.stringify(galleryImages));
-  }, [galleryImages]);
-
-  useEffect(() => {
-    localStorage.setItem('newsEvents', JSON.stringify(newsEvents));
-  }, [newsEvents]);
-
-  // Gallery functions
-  const addGalleryImage = (image: Omit<GalleryImage, 'id'>) => {
+  const addImage = (imageData: Omit<GalleryImage, 'id' | 'createdAt'>): GalleryImage => {
     const newImage: GalleryImage = {
-      ...image,
       id: Date.now(),
+      ...imageData,
+      createdAt: new Date().toISOString()
     };
     setGalleryImages(prev => [...prev, newImage]);
+    return newImage;
   };
 
-  const updateGalleryImage = (id: number, updatedImage: Partial<GalleryImage>) => {
-    setGalleryImages(prev =>
-      prev.map(img => (img.id === id ? { ...img, ...updatedImage } : img))
+  const updateImage = (id: number, updates: Partial<GalleryImage>): void => {
+    setGalleryImages(prev => 
+      prev.map(img => img.id === id ? { ...img, ...updates } : img)
     );
   };
 
-  const deleteGalleryImage = (id: number) => {
+  const deleteImage = (id: number): void => {
     setGalleryImages(prev => prev.filter(img => img.id !== id));
   };
 
-  // News Events functions
-  const addNewsEvent = (event: Omit<NewsEvent, 'id'>) => {
+  const addNewsEvent = (eventData: Omit<NewsEvent, 'id' | 'createdAt'>): NewsEvent => {
     const newEvent: NewsEvent = {
-      ...event,
       id: Date.now(),
+      ...eventData,
+      createdAt: new Date().toISOString()
     };
     setNewsEvents(prev => [...prev, newEvent]);
+    return newEvent;
   };
 
-  const updateNewsEvent = (id: number, updatedEvent: Partial<NewsEvent>) => {
+  const updateNewsEvent = (id: number, updates: Partial<NewsEvent>): void => {
     setNewsEvents(prev =>
-      prev.map(event => (event.id === id ? { ...event, ...updatedEvent } : event))
+      prev.map(event => event.id === id ? { ...event, ...updates } : event)
     );
   };
 
-  const deleteNewsEvent = (id: number) => {
+  const deleteNewsEvent = (id: number): void => {
     setNewsEvents(prev => prev.filter(event => event.id !== id));
   };
 
+  const value: DashboardContextType = {
+    galleryImages,
+    newsEvents,
+    addImage,
+    updateImage,
+    deleteImage,
+    addNewsEvent,
+    updateNewsEvent,
+    deleteNewsEvent
+  };
+
   return (
-    <DashboardContext.Provider
-      value={{
-        galleryImages,
-        addGalleryImage,
-        updateGalleryImage,
-        deleteGalleryImage,
-        setGalleryImages,
-        newsEvents,
-        addNewsEvent,
-        updateNewsEvent,
-        deleteNewsEvent,
-        setNewsEvents,
-      }}
-    >
+    <DashboardContext.Provider value={value}>
       {children}
     </DashboardContext.Provider>
   );
-};
-
-export const useDashboard = () => {
-  const context = useContext(DashboardContext);
-  if (context === undefined) {
-    throw new Error('useDashboard must be used within a DashboardProvider');
-  }
-  return context;
 };

@@ -12,20 +12,19 @@ import {
   MapPin,
 } from "lucide-react";
 import { Card } from "../components/ui/card";
-import { Header } from "../components/landing page/Header";
 import { Link } from "react-router-dom";
 
 const teamMembers = [
   {
-    title: "Proprietress",
-    name: "Dr. Amina Bello",
-    email: "info@zeealphaschools.com",
-    image: "/images/staff giving speech.jpeg",
+    title: "Board Chairman",
+    name: "Dr. Oriolowo Abideen Abbey",
+    image: "/images/board-director.jpeg",
   },
   {
-    title: "Board Director",
-    name: "Alhaji Yusuf Ibrahim",
-    image: "/images/board-director.jpeg",
+    title: "Proprietress",
+    name: "Hajiya Zainab Abideen Abbey",
+    email: "info@zeealphaschools.com",
+    image: "/images/staff giving speech.jpeg",
   },
   {
     title: "Principal",

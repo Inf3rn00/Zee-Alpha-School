@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Home, Images, Newspaper, ArrowLeft } from "lucide-react";
+import {  Images, Newspaper, ArrowLeft } from "lucide-react";
 
 interface SidebarProps {
   activeTab: "gallery" | "news";
