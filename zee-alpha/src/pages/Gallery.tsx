@@ -12,68 +12,6 @@ import {
 import { Card } from "../components/ui/card";
 import { useDashboard } from "./dashboard/DashboardContext";
 
-const fallbackImages = [
-  {
-    src: "/images/3 little engineers.jpeg",
-    alt: "Little engineers",
-    category: "STEM",
-  },
-  {
-    src: "/images/3 students posing.jpeg",
-    alt: "Students posing",
-    category: "Student Life",
-  },
-  {
-    src: "/images/award wining girl 1.jpeg",
-    alt: "Award winning student",
-    category: "Achievements",
-  },
-  {
-    src: "/images/award winning student 1.jpeg",
-    alt: "Award winning student",
-    category: "Achievements",
-  },
-  {
-    src: "/images/basic-tech-1.jpeg",
-    alt: "Science lab activities",
-    category: "STEM",
-  },
-  {
-    src: "/images/engineer drawing.jpeg",
-    alt: "Little engineer drawing",
-    category: "STEM",
-  },
-  {
-    src: "/images/primary students with red group picture.jpeg",
-    alt: "Primary students group photo",
-    category: "Student Life",
-  },
-  {
-    src: "/images/student-speech.jpeg",
-    alt: "Student giving speech",
-    category: "Student Life",
-  },
-  {
-    src: "/images/students-radio.jpeg",
-    alt: "Students at radio station",
-    category: "Activities",
-  },
-  {
-    src: "/images/red-house-vs-yellow-house-volleyball.jpeg",
-    alt: "Volleyball match",
-    category: "Sports",
-  },
-  {
-    src: "/images/student-mentor.jpeg",
-    alt: "Student mentorship",
-    category: "Student Life",
-  },
-  {
-    src: "/images/nigerian_students_cream_bowties_distinct_faces.jpg",
-    alt: "Students in uniform",
-    category: "Student Life",
-  },
-];
 
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);

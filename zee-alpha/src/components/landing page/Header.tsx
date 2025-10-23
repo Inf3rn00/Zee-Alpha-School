@@ -20,7 +20,6 @@ interface HeaderProps {
 
 export function Header({ 
   onNavigate, 
-  currentPage = "home", 
   isAuthenticated = false,
   userEmail = "",
   onLogout 

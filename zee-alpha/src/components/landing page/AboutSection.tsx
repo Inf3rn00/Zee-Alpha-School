@@ -1,7 +1,5 @@
 import { Card } from "../ui/card";
 import {
-  User,
-  Mail,
   Shield,
   Award,
   Lightbulb,
@@ -10,26 +8,6 @@ import {
   Target,
   Eye,
 } from "lucide-react";
-
-const teamMembers = [
-  {
-    title: "Proprietress",
-    email: "info@zeealpha.edu.ng",
-    image: "images/staff giving speech.jpeg",
-  },
-  {
-    title: "Board Director",
-    email: "info@zeealpha.edu.ng",
-  },
-  {
-    title: "Principal",
-    email: "principal@zeealpha.edu.ng",
-  },
-  {
-    title: "Vice Principal",
-    email: "viceprincipal@zeealpha.edu.ng",
-  },
-];
 
 const values = [
   {
