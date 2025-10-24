@@ -24,6 +24,8 @@ export interface NewsEvent {
   description: string;
   category: string;
   createdAt: string;
+  image: string; // Add this field
+
 }
 
 
@@ -34,7 +36,10 @@ export interface NewsFormData {
   location: string;
   description: string;
   category: string;
+  imageFile: File | null; // Add this for file upload
+  imagePreview: string | null; // Add this for preview
 }
+
 
 export interface DashboardContextType {
   galleryImages: GalleryImage[];

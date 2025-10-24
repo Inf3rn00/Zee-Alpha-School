@@ -1,5 +1,5 @@
 import React, { useState, createContext, useContext, type ReactNode } from 'react';
-import { type DashboardContextType, type GalleryImage,type  NewsEvent } from './types';
+import { type DashboardContextType, type GalleryImage, type NewsEvent } from './types';
 
 const DashboardContext = createContext<DashboardContextType | null>(null);
 

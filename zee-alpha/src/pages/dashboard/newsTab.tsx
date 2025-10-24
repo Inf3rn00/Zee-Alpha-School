@@ -6,9 +6,7 @@ import NewsModal from './newsModal';
 import { Plus } from 'lucide-react';
 import { useDashboard } from './DashboardContext';
 
-interface NewsTabProps {
-  // Props can be removed since we're using context
-}
+interface NewsTabProps {}
 
 const NewsTab: React.FC<NewsTabProps> = () => {
   const { newsEvents, addNewsEvent, updateNewsEvent, deleteNewsEvent } = useDashboard();
@@ -22,38 +20,38 @@ const NewsTab: React.FC<NewsTabProps> = () => {
     time: '',
     location: '',
     description: '',
+    imageFile: null,
+    imagePreview: null,
   });
 
   const handleNewsSubmit = () => {
-    if (!newsForm.title.trim()) return;
+    if (!newsForm.title.trim()) {
+      alert("Please provide a title");
+      return;
+    }
+
+    if (!newsForm.imagePreview && !editingItem?.image) {
+      alert("Please upload an image for the event");
+      return;
+    }
+
+    const eventData = {
+      title: newsForm.title,
+      category: newsForm.category,
+      date: newsForm.date,
+      time: newsForm.time,
+      location: newsForm.location,
+      description: newsForm.description,
+      image: newsForm.imagePreview || (editingItem?.image ?? ''),
+    };
 
     if (editingItem) {
-      // Update existing event
-      updateNewsEvent(editingItem.id, {
-        title: newsForm.title,
-        category: newsForm.category,
-        date: newsForm.date,
-        time: newsForm.time,
-        location: newsForm.location,
-        description: newsForm.description,
-      });
+      updateNewsEvent(editingItem.id, eventData);
     } else {
-      // Add new event
-      const newEvent: Omit<NewsEvent, 'id'> = {
-        title: newsForm.title,
-        category: newsForm.category,
-        date: newsForm.date,
-        time: newsForm.time,
-        location: newsForm.location,
-        description: newsForm.description,
-        createdAt: new Date().toISOString(),
-      };
-
-      addNewsEvent(newEvent);
+      addNewsEvent(eventData);
     }
 
     resetNewsForm();
-    setShowNewsModal(false);
   };
 
   const resetNewsForm = () => {
@@ -64,6 +62,8 @@ const NewsTab: React.FC<NewsTabProps> = () => {
       time: '',
       location: '',
       description: '',
+      imageFile: null,
+      imagePreview: null,
     });
     setEditingItem(null);
     setShowNewsModal(false);
@@ -78,6 +78,8 @@ const NewsTab: React.FC<NewsTabProps> = () => {
       time: event.time,
       location: event.location,
       description: event.description,
+      imageFile: null,
+      imagePreview: event.image,
     });
     setShowNewsModal(true);
   };
@@ -110,7 +112,7 @@ const NewsTab: React.FC<NewsTabProps> = () => {
           subtitle="Create your first event to get started"
         />
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {newsEvents.map(event => (
             <NewsCard
               key={event.id}

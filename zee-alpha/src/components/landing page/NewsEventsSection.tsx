@@ -1,5 +1,5 @@
 import { Card } from "../ui/card";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react";
 import { useDashboard } from "../../pages/dashboard/DashboardContext";
 
 export const NewsEventsSection: React.FC = () => {
@@ -15,6 +15,7 @@ export const NewsEventsSection: React.FC = () => {
       location: "School Main Field",
       description: "Celebrating diversity with cultural performances, traditional foods, and international exhibitions from our students.",
       category: "Cultural",
+      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
     },
     {
       id: 2,
@@ -24,6 +25,7 @@ export const NewsEventsSection: React.FC = () => {
       location: "Science Laboratory Complex",
       description: "Showcasing student projects in robotics, renewable energy, and scientific research breakthroughs.",
       category: "Academic",
+      image: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&q=80",
     },
     {
       id: 3,
@@ -33,10 +35,10 @@ export const NewsEventsSection: React.FC = () => {
       location: "School Sports Complex",
       description: "Annual inter-house sports competition featuring track events, football finals, and athletic achievements.",
       category: "Sports",
+      image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&q=80",
     },
   ];
 
-  // ... rest of your component remains the same
   return (
     <section
       id="news"
@@ -79,61 +81,71 @@ export const NewsEventsSection: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {displayEvents.map((event, index) => (
               <div key={event.id || index} className="group">
-                <Card className="relative bg-white/10 backdrop-blur-sm rounded-3xl p-8 hover:shadow-2xl hover:shadow-red-500/20 transition-all duration-500 border border-white/20 hover:translate-y-[-8px] cursor-pointer h-full">
-                  {/* Category Badge */}
-                  <div className="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-2xl text-sm font-semibold mb-6 group-hover:bg-red-500/20 transition-all duration-300">
-                    <div className="w-2 h-2 bg-white rounded-full group-hover:bg-red-300 transition-colors duration-300"></div>
-                    {event.category}
-                  </div>
+                <Card className="relative bg-white/5 backdrop-blur-lg rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-red-500/30 transition-all duration-500 border border-white/10 hover:border-white/20 hover:translate-y-[-8px] cursor-pointer h-full flex flex-col">
+                  
+                  {/* Event Image */}
+                  <div className="relative h-52 overflow-hidden">
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    
+                   
 
-                  {/* Event Title */}
-                  <h3 className="text-2xl font-bold text-white mb-6 leading-tight transition-colors duration-300">
-                    {event.title}
-                  </h3>
-
-                  {/* Event Details */}
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-center gap-3 text-white/80 transition-colors duration-300">
-                      <Calendar
-                        size={20}
-                        className="text-white group-hover:text-red-300 flex-shrink-0 transition-colors duration-300"
-                      />
-                      <span className="text-sm font-medium">{event.date}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-white/80 transition-colors duration-300">
-                      <Clock
-                        size={20}
-                        className="text-white group-hover:text-red-300 flex-shrink-0 transition-colors duration-300"
-                      />
-                      <span className="text-sm font-medium">{event.time}</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-white/80 transition-colors duration-300">
-                      <MapPin
-                        size={20}
-                        className="text-white group-hover:text-red-300 flex-shrink-0 transition-colors duration-300"
-                      />
-                      <span className="text-sm font-medium">
-                        {event.location}
-                      </span>
+                    {/* Date Badge */}
+                    <div className="absolute top-4 right-4">
+                      <div className="bg-black/40 backdrop-blur-sm text-white px-3 py-1 rounded-full text-xs font-medium border border-white/20">
+                        {event.category}
+                      </div>
                     </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-white/70 text-sm leading-relaxed mb-8 transition-colors duration-300">
-                    {event.description}
-                  </p>
+                  {/* Card Content */}
+                  <div className="p-6 flex-1 flex flex-col">
+                    {/* Event Title */}
+                    <h3 className="text-xl font-bold text-white mb-4 leading-tight group-hover:text-red-100 transition-colors duration-300 line-clamp-2">
+                      {event.title}
+                    </h3>
 
-                  {/* CTA Button */}
-                  <div className="flex items-center justify-between">
-                    <div className="text-xs text-white/60 group-hover:text-red-200 font-medium transition-colors duration-300">
-                      Free Event
+                    {/* Event Details */}
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center gap-3 text-white/80 group-hover:text-white/90 transition-colors duration-300">
+                        <Calendar
+                          size={18}
+                          className="text-red-300 group-hover:text-red-200 flex-shrink-0 transition-colors duration-300"
+                        />
+                        <span className="text-sm font-medium">{event.date}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-white/80 group-hover:text-white/90 transition-colors duration-300">
+                        <Clock
+                          size={18}
+                          className="text-red-300 group-hover:text-red-200 flex-shrink-0 transition-colors duration-300"
+                        />
+                        <span className="text-sm font-medium">{event.time}</span>
+                      </div>
+                      <div className="flex items-center gap-3 text-white/80 group-hover:text-white/90 transition-colors duration-300">
+                        <MapPin
+                          size={18}
+                          className="text-red-300 group-hover:text-red-200 flex-shrink-0 transition-colors duration-300"
+                        />
+                        <span className="text-sm font-medium line-clamp-1">
+                          {event.location}
+                        </span>
+                      </div>
                     </div>
+
+                    {/* Description */}
+                    <p className="text-white/70 text-sm leading-relaxed mb-6 flex-1 group-hover:text-white/80 transition-colors duration-300 line-clamp-3">
+                      {event.description}
+                    </p>
+
+                  
                   </div>
 
-                  {/* Hover Border Effect */}
-                  <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-red-500 to-red-600 bg-clip-padding opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
-                    <div className="rounded-3xl bg-[#1E3A8A] w-full h-full"></div>
-                  </div>
+                 
+                  
+                 
                 </Card>
               </div>
             ))}
@@ -142,4 +154,4 @@ export const NewsEventsSection: React.FC = () => {
       </div>
     </section>
   );
-}
+};

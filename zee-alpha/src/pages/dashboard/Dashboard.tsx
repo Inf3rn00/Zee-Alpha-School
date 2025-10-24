@@ -40,7 +40,7 @@ const Dashboard: React.FC = () => {
     imageFile: null,
     imagePreview: null,
   });
-
+  // In your Dashboard component, update the newsForm state initialization:
   const [newsForm, setNewsForm] = useState<NewsFormData>({
     title: "",
     date: "",
@@ -48,6 +48,8 @@ const Dashboard: React.FC = () => {
     location: "",
     description: "",
     category: "General",
+    imageFile: null,
+    imagePreview: null,
   });
 
   const handleImageFileChange = (
@@ -118,6 +120,7 @@ const Dashboard: React.FC = () => {
       location: newsForm.location,
       description: newsForm.description,
       category: newsForm.category,
+      image: newsForm.imagePreview ?? "",
     };
 
     if (editingItem) {
@@ -139,7 +142,6 @@ const Dashboard: React.FC = () => {
     setShowImageModal(false);
     setEditingItem(null);
   };
-
   const resetNewsForm = (): void => {
     setNewsForm({
       title: "",
@@ -148,6 +150,8 @@ const Dashboard: React.FC = () => {
       location: "",
       description: "",
       category: "General",
+      imageFile: null,
+      imagePreview: null,
     });
     setShowNewsModal(false);
     setEditingItem(null);
@@ -173,6 +177,8 @@ const Dashboard: React.FC = () => {
       location: event.location,
       description: event.description,
       category: event.category,
+      imageFile: null,
+      imagePreview: event.image,
     });
     setShowNewsModal(true);
   };

@@ -13,7 +13,7 @@ const admissionSteps = [
       methods: [
         "Online: Download from our website portal",
         "In-person: Visit our admissions office",
-        "Email: Request form via admission@zeealphaschools.com"
+        "Email: Request form via ",
       ],
       requirements: "Form includes student information, parent/guardian details, and academic history",
       deadline: "Forms available year-round for next academic session"
@@ -27,7 +27,7 @@ const admissionSteps = [
     details: {
       methods: [
         "Online submission via portal",
-        "Email to admission@zeealphaschools.com",
+        "Email to ",
         "Physical submission at school office"
       ],
       documents: [
@@ -80,9 +80,17 @@ const admissionSteps = [
   },
 ];
 
-
-
-
+// Email component to avoid repetition
+const EmailLink = ({ children, className = "" }: { children?: React.ReactNode; className?: string }) => (
+  <a 
+    href="mailto:admission@zeealphaschools.com"
+    className={`text-blue-400 hover:text-blue-600 underline transition-colors duration-200 ${className}`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {children || "admission@zeealphaschools.com"}
+  </a>
+);
 
 export default function Admissions() {
   return (
@@ -194,7 +202,26 @@ export default function Admissions() {
                               {value.map((item, itemIndex) => (
                                 <li key={itemIndex} className="flex items-start gap-2">
                                   <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                                  <span className="text-gray-600">{item}</span>
+                                  <span className="text-gray-600">
+                                    {typeof item === 'string' && item.includes('admission@zeealphaschools.com') ? (
+                                      <>
+                                        {item.replace('admission@zeealphaschools.com', '')}
+                                        <EmailLink />
+                                      </>
+                                    ) : typeof item === 'string' && item === 'Email to ' ? (
+                                      <>
+                                        {item}
+                                        <EmailLink />
+                                      </>
+                                    ) : typeof item === 'string' && item === 'Email: Request form via ' ? (
+                                      <>
+                                        {item}
+                                        <EmailLink />
+                                      </>
+                                    ) : (
+                                      item
+                                    )}
+                                  </span>
                                 </li>
                               ))}
                             </ul>
@@ -212,10 +239,6 @@ export default function Admissions() {
         </div>
       </section>
 
-      
-
-    
-
       {/* Final CTA Section */}
       <section className="py-20 bg-gradient-to-br from-red-600 to-red-700">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -229,10 +252,9 @@ export default function Admissions() {
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
             <Button className="bg-white hover:bg-gray-100 text-red-600 rounded-2xl px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-2xl">
-             <Link to="/AdmissionForm">Start Online Application</Link> 
+              <Link to="/AdmissionForm">Start Online Application</Link> 
               <ArrowRight size={20} className="ml-3" />
             </Button>
-          
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mt-12">
@@ -255,16 +277,10 @@ export default function Admissions() {
                 <GraduationCap className="text-white" size={24} />
               </div>
               <p className="text-white font-semibold">Campus Tours</p>
-            <p className="text-red-100 text-sm">
-  Schedule Your Visit:{" "}
-  <a 
-    href="mailto:info@zeealphaschools.com?subject=Schedule Campus Tour&body=Hello, I would like to schedule a campus tour."
-    target="_blank" 
-    className="text-blue-300 underline hover:text-blue-200 transition-colors duration-200"
-  >
-    admission@zeealphaschools.com
-  </a>
-</p>
+              <p className="text-red-100 text-sm">
+                Schedule Your Visit:{" "}
+                <EmailLink className="text-blue-300 underline hover:text-blue-200" />
+              </p>
             </div>
           </div>
         </div>

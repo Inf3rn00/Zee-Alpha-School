@@ -1,5 +1,6 @@
 import React from "react";
 import { type NewsEvent, type NewsFormData } from "./types";
+import { Upload, X } from "lucide-react";
 
 interface NewsModalProps {
   showNewsModal: boolean;
@@ -20,8 +21,64 @@ const NewsModal: React.FC<NewsModalProps> = ({
 }) => {
   if (!showNewsModal) return null;
 
+  // Calculate word count and remaining words
+  const wordCount = newsForm.description.trim() ? newsForm.description.trim().split(/\s+/).length : 0;
+  const maxWords = 20;
+  const wordsLeft = maxWords - wordCount;
+  const isOverLimit = wordsLeft < 0;
+
+  const handleImageFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (!file.type.startsWith("image/")) {
+        alert("Please select an image file");
+        return;
+      }
+
+      if (file.size > 5 * 1024 * 1024) {
+        alert("File size must be less than 5MB");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewsForm({
+          ...newsForm,
+          imageFile: file,
+          imagePreview: reader.result as string,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const removeImage = (): void => {
+    setNewsForm({
+      ...newsForm,
+      imageFile: null,
+      imagePreview: null,
+    });
+  };
+
+  const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const text = e.target.value;
+    const words = text.trim() ? text.trim().split(/\s+/) : [];
+    
+    if (words.length <= maxWords) {
+      setNewsForm({ ...newsForm, description: text });
+    } else {
+      // If over limit, truncate to max words
+      const truncatedText = words.slice(0, maxWords).join(' ');
+      setNewsForm({ ...newsForm, description: truncatedText });
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isOverLimit) {
+      alert("Description exceeds the 30-word limit. Please shorten your description.");
+      return;
+    }
     handleNewsSubmit();
   };
 
@@ -31,13 +88,52 @@ const NewsModal: React.FC<NewsModalProps> = ({
       onClick={resetNewsForm}
     >
       <div
-        className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <form onSubmit={handleSubmit} className="p-6">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             {editingItem ? "Edit Event" : "Add Event"}
           </h2>
+
+          {/* Image Upload Section */}
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Event Image
+            </label>
+            {newsForm.imagePreview ? (
+              <div className="relative">
+                <img
+                  src={newsForm.imagePreview}
+                  alt="Preview"
+                  className="w-full h-48 object-cover rounded-lg mb-2"
+                />
+                <button
+                  type="button"
+                  onClick={removeImage}
+                  className="absolute top-2 right-2 bg-red-500 text-white p-1 rounded-full hover:bg-red-600 transition-colors"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            ) : (
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors">
+                <Upload className="mx-auto text-gray-400 mb-2" size={24} />
+                <p className="text-sm text-gray-600 mb-2">
+                  Click to upload an image
+                </p>
+                <p className="text-xs text-gray-500">
+                  PNG, JPG, GIF up to 5MB
+                </p>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageFileChange}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+              </div>
+            )}
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
@@ -67,10 +163,10 @@ const NewsModal: React.FC<NewsModalProps> = ({
                 }
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                <option>General</option>
-                <option>Cultural</option>
-                <option>Academic</option>
-                <option>Sports</option>
+                <option value="General">General</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Academic">Academic</option>
+                <option value="Sports">Sports</option>
               </select>
             </div>
           </div>
@@ -122,18 +218,34 @@ const NewsModal: React.FC<NewsModalProps> = ({
           </div>
 
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Description
-            </label>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Description
+              </label>
+              <div className={`text-xs font-medium ${
+                isOverLimit ? 'text-red-600' : 
+                wordsLeft <= 10 ? 'text-amber-600' : 'text-gray-500'
+              }`}>
+                {wordsLeft} word{wordsLeft !== 1 ? 's' : ''} left
+              </div>
+            </div>
             <textarea
               value={newsForm.description}
-              onChange={(e) =>
-                setNewsForm({ ...newsForm, description: e.target.value })
-              }
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
-              placeholder="Event description"
+              onChange={handleDescriptionChange}
+              className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical ${
+                isOverLimit 
+                  ? 'border-red-300 bg-red-50' 
+                  : 'border-gray-300'
+              }`}
+              placeholder="Event description (max 20 words)"
               rows={4}
             />
+            {isOverLimit && (
+              <p className="text-red-600 text-xs mt-1 flex items-center gap-1">
+                <X size={12} />
+                Description exceeds 20-word limit. Please shorten your text.
+              </p>
+            )}
           </div>
 
           <div className="flex gap-3 justify-end">
@@ -146,10 +258,10 @@ const NewsModal: React.FC<NewsModalProps> = ({
             </button>
             <button
               type="submit"
-              disabled={!newsForm.title.trim()}
+              disabled={!newsForm.title.trim() || isOverLimit}
               className="flex items-center gap-2 px-4 py-2 bg-blue-900 hover:bg-blue-800 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-all duration-200 shadow-md"
             >
-              {editingItem ? "Update" : "Upload"}
+              {editingItem ? "Update Event" : "Add Event"}
             </button>
           </div>
         </form>
