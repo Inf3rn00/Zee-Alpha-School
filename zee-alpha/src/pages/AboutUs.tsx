@@ -351,7 +351,7 @@ export default function AboutPage() {
               &copy; {getCurrentYear()} Zee-Alpha International Schools. All Rights Reserved.
             </p>
             <p className="text-red-200/80 text-sm mt-2">
-              Funtua, Katsina State, Nigeria | Phone: 09012345678 | Email: info@zeealpha.edu.ng
+              Funtua, Katsina State, Nigeria | Phone: 08032369810 | Email: info@zeealphaschools.com
             </p>
           </div>
         </div>

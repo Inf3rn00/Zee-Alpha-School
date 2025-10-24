@@ -57,7 +57,7 @@ export function Footer() {
                   </div>
                   <div className="flex-1">
                     <p className="font-semibold text-white/90">Phone Number</p>
-                    <p className="text-white/70 text-sm mt-1">09012345678</p>
+                    <p className="text-white/70 text-sm mt-1">08032369810</p>
                   </div>
                 </div>
 
@@ -68,10 +68,10 @@ export function Footer() {
                   <div className="flex-1">
                     <p className="font-semibold text-white/90">Email Address</p>
                     <p className="text-white/70 text-sm mt-1">
-                      info@zeealpha.edu.ng
+                      info@zeealphaschools.com
                     </p>
                     <p className="text-white/70 text-sm mt-1">
-                      admissions@zeealpha.edu.ng
+                      admissions@zeealphaschools.com
                     </p>
                   </div>
                 </div>

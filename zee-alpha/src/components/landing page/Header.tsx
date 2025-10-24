@@ -157,10 +157,10 @@ export function Header({
                   alt="Logo"
                 />
               </div>
-              <div className="hidden sm:block">
+              <div className=" sm:block">
                 <h1 className="text-2xl font-bold text-red-700">ZEE-ALPHA</h1>
                 <p className="text-xs text-gray-500 font-medium tracking-wide">
-                  Nurturing Future Leaders
+                 Good Start.. Great Future
                 </p>
               </div>
             </div>
@@ -285,6 +285,7 @@ export function Header({
                   >
                     {item.label}
                   </button>
+                  
                 ) : 
                 item.type === "button" ? (
                   <button
