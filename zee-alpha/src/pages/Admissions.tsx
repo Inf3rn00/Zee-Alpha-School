@@ -13,7 +13,7 @@ const admissionSteps = [
       methods: [
         "Online: Download from our website portal",
         "In-person: Visit our admissions office",
-        "Email: Request form via admissions@zeealpha.edu.ng"
+        "Email: Request form via admission@zeealphaschools.com"
       ],
       requirements: "Form includes student information, parent/guardian details, and academic history",
       deadline: "Forms available year-round for next academic session"
@@ -27,7 +27,7 @@ const admissionSteps = [
     details: {
       methods: [
         "Online submission via portal",
-        "Email to admissions@zeealpha.edu.ng",
+        "Email to admission@zeealphaschools.com",
         "Physical submission at school office"
       ],
       documents: [

@@ -18,7 +18,7 @@ const teamMembers = [
   {
     title: "Board Chairman",
     name: "Dr. Oriolowo Abideen Abbey",
-    image: "/images/board-director.jpeg",
+    image: "/images/board director.jpeg",
   },
   {
     title: "Proprietress",
