@@ -126,13 +126,15 @@ export function AdmissionsSection() {
             Start your admission journey with us today.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+            <Link to="/admissions">
             <Button  className="bg-white hover:bg-gray-100 text-red-600 cursor-pointer rounded-2xl px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl shadow-red-900/30 border-0 group">
-              <Link to="/admissions">Start Application</Link>
+              Start Application
               <ArrowRight
                 size={20}
                 className="ml-3 group-hover:translate-x-1 transition-transform duration-300"
               />
             </Button>
+            </Link>
           </div>
           <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
             <p className="text-red-100 text-sm">

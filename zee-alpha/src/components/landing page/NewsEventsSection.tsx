@@ -15,7 +15,7 @@ export const NewsEventsSection: React.FC = () => {
       location: "School Main Field",
       description: "Celebrating diversity with cultural performances, traditional foods, and international exhibitions from our students.",
       category: "Cultural",
-      image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
+      image: "./images/nigerian-group-picture.jpeg",
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ export const NewsEventsSection: React.FC = () => {
       location: "Science Laboratory Complex",
       description: "Showcasing student projects in robotics, renewable energy, and scientific research breakthroughs.",
       category: "Academic",
-      image: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=800&q=80",
+      image: "./images/basic-tech-1.jpeg",
     },
     {
       id: 3,
@@ -35,7 +35,7 @@ export const NewsEventsSection: React.FC = () => {
       location: "School Sports Complex",
       description: "Annual inter-house sports competition featuring track events, football finals, and athletic achievements.",
       category: "Sports",
-      image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&q=80",
+      image: "./images/student-in-sport.jpeg",
     },
   ];
 

@@ -26,9 +26,9 @@ const galleryImages = [
     category: "Achievements",
   },
   {
-    src: "/images/basic-tech-1.jpeg",
+    src: "/images/students in class 4.jpeg",
     alt: "Science lab activities",
-    category: "STEM",
+    category: "Student Life",
   },
   {
     src: "/images/engineer drawing.jpeg",
@@ -142,9 +142,11 @@ export function GallerySection() {
               achievements, campus life, and memorable moments throughout the
               academic year.
             </p>
+             <Link to="/gallery">
             <button className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white cursor-pointer rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-xl shadow-red-200/50 border-0">
-            <Link to="/gallery">View Full Gallery</Link>  
+           View Full Gallery
             </button>
+            </Link>  
           </div>
         </div>
       </div>
