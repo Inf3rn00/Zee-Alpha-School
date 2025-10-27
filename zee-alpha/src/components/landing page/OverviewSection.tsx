@@ -8,7 +8,6 @@ const highlights = [
   "Vibrant extracurricular activities to develop well-rounded students",
 ];
 
-
 export function OverviewSection() {
   return (
     <section className="relative py-24 overflow-hidden">
@@ -81,21 +80,22 @@ export function OverviewSection() {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-semibold px-8 cursor-pointer"
-              >
-               <Link to="/admissions">Apply Now</Link> 
-              </Button>
-
-              <Button
-                size="lg"
-                className="bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold px-8 cursor-pointer"
-              >
-                <a href="#contact" className="no-underline">
+              <Link to="/admissions">
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 font-semibold px-8 cursor-pointer"
+                >
+                  Apply Now
+                </Button>
+              </Link>
+              <a href="#contact" className="no-underline">
+                <Button
+                  size="lg"
+                  className="bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold px-8 cursor-pointer"
+                >
                   Contact Us
-                </a>
-              </Button>
+                </Button>
+              </a>
             </div>
           </div>
 

@@ -12,7 +12,6 @@ import {
 import { Card } from "../components/ui/card";
 import { useDashboard } from "./dashboard/DashboardContext";
 
-
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -28,7 +27,7 @@ export function Gallery() {
     ...new Set(displayImages.map((img) => img.category)),
   ];
 
-// Filter images based on selected category
+  // Filter images based on selected category
   const filteredImages =
     activeCategory === "All"
       ? displayImages
@@ -54,7 +53,6 @@ export function Gallery() {
 
   return (
     <div className="min-h-screen bg-white">
-
       {/* Hero Section - Using Admissions styling */}
       <section className="relative py-20 bg-gradient-to-br from-red-600 to-red-700 text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
@@ -195,14 +193,12 @@ export function Gallery() {
               Browse through our carefully curated collection of memorable
               moments and achievements
             </p>
-            
-            
           </div>
 
           {viewMode === "grid" ? (
             // Grid Layout
             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filteredImages.map((image, index) => ( 
+              {filteredImages.map((image, index) => (
                 <GalleryCard
                   key={image.src || index}
                   image={image}
@@ -287,15 +283,14 @@ export function Gallery() {
             See why our students love coming to school every day. Explore the
             vibrant community that makes Zee-Alpha special.
           </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
-            <a
-              href="mailto:info@zeealphaschools.com?subject=Schedule%20Campus%20Tour&body=I%20would%20like%20to%20schedule%20a%20campus%20tour.%20Please%20provide%20more%20information"
-              className="inline-block bg-white hover:bg-gray-100 text-red-600 rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
-            >
+          <a
+            href="mailto:info@zeealphaschools.com?subject=Schedule%20Campus%20Tour&body=I%20would%20like%20to%20schedule%20a%20campus%20tour.%20Please%20provide%20more%20information"
+            className="inline-block bg-white hover:bg-gray-100 text-red-600 rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-2xl "
+          >
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               Schedule Campus Tour
-            </a>
-          </div>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -363,7 +358,7 @@ function GalleryCard({
   onClick: () => void;
 }) {
   return (
-    <Card 
+    <Card
       className="group relative bg-white/90 backdrop-blur-sm rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-red-100/50 transition-all duration-500 border border-gray-200/60 hover:border-red-200/80 hover:translate-y-[-8px] cursor-pointer"
       onClick={onClick}
     >

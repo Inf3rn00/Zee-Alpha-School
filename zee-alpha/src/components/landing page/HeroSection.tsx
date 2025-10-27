@@ -121,13 +121,14 @@ export function HeroSection() {
                   {slide.description}
                 </p>
                 <div className="space-x-4">
-                  <Button
-                    size="lg"
-                    className="bg-red-700 hover:bg-red-800 text-white border border-red-700"
-                  >
-                   <Link to="/admissions">Apply for Admission</Link> 
-                  </Button>
-                 
+                  <Link to="/admissions">
+                    <Button
+                      size="lg"
+                      className="bg-red-700 hover:bg-red-800 text-white border border-red-700"
+                    >
+                      Apply for Admission
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>

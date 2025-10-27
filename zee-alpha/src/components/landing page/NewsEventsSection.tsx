@@ -1,5 +1,5 @@
 import { Card } from "../ui/card";
-import { Calendar, Clock, MapPin, ArrowRight } from "lucide-react";
+import { Calendar, Clock, MapPin } from "lucide-react";
 import { useDashboard } from "../../pages/dashboard/DashboardContext";
 
 export const NewsEventsSection: React.FC = () => {
