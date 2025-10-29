@@ -27,14 +27,34 @@ const teamMembers = [
     image: "/images/staff giving speech.jpeg",
   },
   {
-    title: "Principal",
-    name: "Mrs. Chinedu Okoro",
-    image: "/images/principal.jpeg",
+    title: "School coordinator",
+    name: "Mr. Abdullahi kabir",
+    image: "/images/Name-Mr. Abdullahi kabir Position- School coordinator .jpeg",
+    email: "abdullahiKabir337@gmail.com"
   },
   {
-    title: "Vice Principal",
-    name: "Mr. Adewale Johnson",
-    image: "/images/vice-principal.jpeg",
+    title: " Head of college ",
+    name: "Grace Ele Yakubu ",
+    image: "/images/Name- Grace Ele Yakubu   Position- Head of college.jpeg",
+    email:"eleojograce772@gmail.com"
+  },
+  {
+    title: "Vice principal admin",
+    name: "Abdulrahman Yusrah  ",
+    image: "/images/Name- Abdulrahman Yusrah  Position- Vice principal admin..jpeg",
+    email:"yusrahabiolaabdulrahman@gmail.com"
+  },
+  {
+    title: "Head of School  Primary",
+    name: "Michael Sunday Okoh ",
+    image: "/images/Name- Michael Sunday Okoh   Position- Head of School  Primar.jpeg",
+    email:"michaelokoh01@gmail.com"
+  },
+  {
+    title: "Assistant Head of School Primary ",
+    name: "Ajibade Bose Rebecca ",
+    image: "/images/Name- Ajibade Bose Rebecca   Position- Assistant Head of School  Primary .jpeg",
+    email:"boseaji2015@gmail.com"
   },
 ];
 
@@ -282,7 +302,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <Card key={index} className="bg-white rounded-3xl p-8 hover:shadow-2xl transition-all duration-300 border border-gray-200 group hover:border-red-200">
                 {/* Profile Image */}
