@@ -284,7 +284,7 @@ export function Gallery() {
             vibrant community that makes Zee-Alpha special.
           </p>
           <a
-            href="mailto:info@zeealphaschools.com?subject=Schedule%20Campus%20Tour&body=I%20would%20like%20to%20schedule%20a%20campus%20tour.%20Please%20provide%20more%20information"
+            href="mailto:college@zeealphaschools.com?subject=Schedule%20Campus%20Tour&body=I%20would%20like%20to%20schedule%20a%20campus%20tour.%20Please%20provide%20more%20information"
             className="inline-block bg-white hover:bg-gray-100 text-red-600 rounded-2xl px-8 py-4 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-2xl "
           >
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">

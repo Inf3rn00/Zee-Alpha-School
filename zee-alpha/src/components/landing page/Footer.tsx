@@ -68,7 +68,7 @@ export function Footer() {
                   <div className="flex-1">
                     <p className="font-semibold text-white/90">Email Address</p>
                     <p className="text-white/70 text-sm mt-1">
-                      info@zeealphaschools.com
+                    college@zeealphaschools.com
                     </p>
                     <p className="text-white/70 text-sm mt-1">
                       admissions@zeealphaschools.com

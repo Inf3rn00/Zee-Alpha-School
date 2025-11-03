@@ -23,38 +23,37 @@ const teamMembers = [
   {
     title: "Proprietress",
     name: "Hajiya Zainab Abideen Abbey",
-    email: "info@zeealphaschools.com",
     image: "/images/staff giving speech.jpeg",
   },
   {
     title: "School coordinator",
     name: "Mr. Abdullahi kabir",
     image: "/images/Name-Mr. Abdullahi kabir Position- School coordinator .jpeg",
-    email: "abdullahiKabir337@gmail.com"
+    email: "coordinator@zeealphaschools.com"
   },
   {
     title: " Head of college ",
     name: "Grace Ele Yakubu ",
     image: "/images/Name- Grace Ele Yakubu   Position- Head of college.jpeg",
-    email:"eleojograce772@gmail.com"
+    email:"college@zeealphaschools.com"
   },
   {
     title: "Vice principal admin",
     name: "Abdulrahman Yusrah  ",
     image: "/images/Name- Abdulrahman Yusrah  Position- Vice principal admin..jpeg",
-    email:"yusrahabiolaabdulrahman@gmail.com"
+    email:"vp@zeealphaschools.com"
   },
   {
     title: "Head of School  Primary",
     name: "Michael Sunday Okoh ",
     image: "/images/Name- Michael Sunday Okoh   Position- Head of School  Primar.jpeg",
-    email:"michaelokoh01@gmail.com"
+    email:"primary@zeealphaschools.com"
   },
   {
     title: "Assistant Head of School Primary ",
     name: "Ajibade Bose Rebecca ",
     image: "/images/Name- Ajibade Bose Rebecca   Position- Assistant Head of School  Primary .jpeg",
-    email:"boseaji2015@gmail.com"
+    email:"primary@zeealphaschools.com"
   },
 ];
 
@@ -371,7 +370,7 @@ export default function AboutPage() {
               &copy; {getCurrentYear()} Zee-Alpha International Schools. All Rights Reserved.
             </p>
             <p className="text-red-200/80 text-sm mt-2">
-              Funtua, Katsina State, Nigeria | Phone: 08032369810 | Email: info@zeealphaschools.com
+              Funtua, Katsina State, Nigeria | Phone: 08032369810 | Email: college@zeealphaschools.com
             </p>
           </div>
         </div>
